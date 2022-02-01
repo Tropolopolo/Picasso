@@ -106,8 +106,8 @@ body {
 }
 
 .Box1 {
-  width: 500px;
-  height: 150px;
+  width: 400px;
+  height: 90px;
   padding: 100px;
   border: 5px solid gray;
   position: absolute;
@@ -116,8 +116,8 @@ body {
 }
 
 .Box2 {
-  width: 500px;
-  height: 150px;
+  width: 400px;
+  height: 90px;
   padding: 100px;
   border: 5px solid gray;
   position: absolute;

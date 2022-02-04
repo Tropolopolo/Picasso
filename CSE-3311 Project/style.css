@@ -1,0 +1,232 @@
+/* Body of the page with a background picture */
+body {
+  background-color: #333;
+  background-image: url("wall-paint.jpg");
+  height: 500px; /* You must set a specified height */
+  background-position: center; /* Center the image */
+  background-repeat: repeat; /* Do not repeat the image */
+  background-size: cover; /* Resize the background image to cover the entire container */
+}
+
+/* This is for Modal */
+/* Modal */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgba(0, 0, 0); /* Black w/ opacity */
+  background-color: rgba(0, 0, 0, 0.5); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+  background-color: #fefefe;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+}
+
+/* Close Button */
+.close {
+  color: #aaaaaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+/* Hover over the close button */
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* style for addbutton */
+.AddProject {
+  position: relative;
+  left: 65%;
+  background-color: #4caf50;
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+}
+
+/* hover for addbutton */
+.AddProject a:hover {
+  display: block;
+  background-color: #f1f1f1;
+}
+
+/* This is the for the top navigation button */
+/*background color for the navigation bar */
+.topnav {
+  background-color: #333;
+  overflow: hidden;
+}
+
+/* Style for Picasso at the top left will add home page function later */
+.topnav a {
+  float: left;
+  color: #f2f2f2;
+  text-align: center;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+/* hover for Picasso*/
+.topnav a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+/* also gives picasso style */
+.topnav a.active {
+  background-color: #04aa6d;
+  color: white;
+}
+
+/* Style for the dropdown button*/
+.dropbtn {
+  background-color: #4caf50;
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+}
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+  position: absolute;
+  display: inline-block;
+  left: 50%;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 100px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {
+  background-color: #f1f1f1;
+}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+/* Change the background color of the dropdown button when the dropdown content is shown */
+.dropdown:hover .dropbtn {
+  background-color: #3e8e41;
+}
+
+/* style for addbutton */
+.AddButton {
+  background-color: #4caf50;
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+}
+
+/* hover for addbutton */
+.AddButton a:hover {
+  display: block;
+  background-color: #f1f1f1;
+}
+
+/* Box with info just to see how it looks */
+.Box1,
+.Box2 {
+  width: 400px;
+  height: 90px;
+  padding: 100px;
+  border: 5px solid gray;
+  position: absolute;
+  background-color: #333;
+  overflow: hidden;
+}
+
+/* Position of the box */
+.P1,
+.P2 {
+  position: relative;
+  color: white;
+  right: 20%;
+  top: -100px;
+}
+
+/* This is where the form starts */
+/* style for Text area */
+input[type="text"],
+select,
+textarea {
+  width: 70%; /* Full width */
+  padding: 12px; /* Some padding */
+  border: 1px solid #ccc; /* Gray border */
+  border-radius: 4px; /* Rounded borders */
+  box-sizing: border-box; /* Make sure that padding and width stays in place */
+  margin-top: 6px; /* Add a top margin */
+  margin-bottom: 16px; /* Bottom margin */
+  resize: vertical; /* Allow the user to vertically resize the textarea (not horizontally) */
+}
+
+/* Style the submit button*/
+input[type="submit"] {
+  position: relative;
+  left: 40%;
+  background-color: #04aa6d;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+/* When moving the mouse over the submit button, add a darker green color */
+input[type="submit"]:hover {
+  background-color: #45a049;
+}
+
+/* Add a background color and some padding around the form */
+.container {
+  position: relative;
+  width: 500px;
+  top: 20px;
+  left: 28%;
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 20px;
+}
+
+/* location of the form title in the middle top */
+.Form {
+  position: relative;
+  left: 40%;
+}

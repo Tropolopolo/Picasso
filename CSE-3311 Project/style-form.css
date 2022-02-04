@@ -1,7 +1,15 @@
+body {
+  background-color: #333;
+  background-image: url("wall-paint.jpg");
+  height: 500px; /* You must set a specified height */
+  background-position: center; /* Center the image */
+  background-repeat: repeat; /* Do not repeat the image */
+  background-size: cover; /* Resize the background image to cover the entire container */
+}
 input[type="text"],
 select,
 textarea {
-  width: 100%; /* Full width */
+  width: 70%; /* Full width */
   padding: 12px; /* Some padding */
   border: 1px solid #ccc; /* Gray border */
   border-radius: 4px; /* Rounded borders */
@@ -13,6 +21,8 @@ textarea {
 
 /* Style the submit button with a specific background color etc */
 input[type="submit"] {
+  position: relative;
+  left: 40%;
   background-color: #04aa6d;
   color: white;
   padding: 12px 20px;
@@ -28,7 +38,16 @@ input[type="submit"]:hover {
 
 /* Add a background color and some padding around the form */
 .container {
+  position: relative;
+  width: 500px;
+  top: 20px;
+  left: 28%;
   border-radius: 5px;
   background-color: #f2f2f2;
   padding: 20px;
+}
+
+.Form {
+  position: relative;
+  left: 40%;
 }

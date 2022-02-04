@@ -8,15 +8,52 @@
     <title>Picaso</title>
   </head>
   <body>
+    <!-- The top navigation bar -->
     <div class="topnav">
+      <!-- Project name = Picasso -->
       <a class="active" href="#home"><h1>Picasso</h1></a>
+      <!-- Form in Modal -->
+      <button class="AddProject" id="myBtn">
+        <span>&#43;</span> Add Project(Modal)
+      </button>
+      <!-- The Modal -->
+      <div id="myModal" class="modal">
+        <!-- Modal content -->
+        <div class="modal-content">
+          <!-- The close button -->
+          <span class="close">&times;</span>
+          <div class="Form">
+            <h1>Project Form</h1>
+          </div>
+          <!-- Form -->
+          <div class="container">
+            <form action="action_page.php">
+              <label for="fname">Project Name &emsp;</label>
+              <input type="text" placeholder="Your Project Name" />
+              <br />
+              <label for="Address">Address &emsp;&emsp;&ensp;&ensp;</label>
+              <input type="text" placeholder="Address of the Project" />
+              <br />
+              <label for="Manager">Project Manager</label>
+              <input type="text" placeholder="Name of Project Manager" />
+              <br />
+              <label for="Material">Matirials Used &ensp;</label>
+              <input type="text" placeholder="Name of Materials Used" />
+              <br />
+              <input type="submit" value="Submit" />
+            </form>
+          </div>
+        </div>
+      </div>
+      <!-- Add Project Button to open form in a new page -->
       <a
         href="http://127.0.0.1:5555/HTML/CSE-3311%20Project/form.html"
         target="_"
         style="float: right"
         class="AddButton"
-        ><span>&#43;</span> Add Project</a
+        ><span>&#43;</span> Add Project(New Page)</a
       >
+      <!-- Dropdown menu -->
       <div class="dropdown">
         <button class="dropbtn">Projects</button>
         <div class="dropdown-content">
@@ -37,19 +74,6 @@
           Materials used : Flat, Semiglass, Egg-Shell
         </p>
       </div>
-      <div class="circle-wrap">
-        <div class="circle">
-          <div class="mask full">
-            <div class="fill"></div>
-          </div>
-
-          <div class="mask half">
-            <div class="fill"></div>
-          </div>
-
-          <div class="inside-circle">30%</div>
-        </div>
-      </div>
     </div>
     <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
     <br /><br /><br /><br />
@@ -63,19 +87,7 @@
           Materials used : Flat, Semiglass, Egg-Shell
         </p>
       </div>
-      <div class="circle-wrap">
-        <div class="circle">
-          <div class="mask full">
-            <div class="fill"></div>
-          </div>
-
-          <div class="mask half">
-            <div class="fill"></div>
-          </div>
-
-          <div class="inside-circle">70%</div>
-        </div>
-      </div>
     </div>
+    <script src="node.js"></script>
   </body>
 </html>

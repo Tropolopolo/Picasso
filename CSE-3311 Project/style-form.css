@@ -51,3 +51,16 @@ input[type="submit"]:hover {
   position: relative;
   left: 40%;
 }
+
+.alert {
+  width: 40%;
+  position: relative;
+  left: 30%;
+  background-color: #0c9965;
+  padding: 5px 5px;
+  border-radius: 5px;
+  text-align: center;
+  color: white;
+  font-size: 20px;
+  display: none;
+}

@@ -26,11 +26,12 @@ body {
 
 /* Modal Content */
 .modal-content {
+  border-radius: 25px;
   background-color: #fefefe;
   margin: auto;
   padding: 20px;
   border: 1px solid #888;
-  width: 80%;
+  width: 500px;
 }
 
 /* Close Button */
@@ -70,6 +71,7 @@ body {
 /* This is the for the top navigation button */
 /*background color for the navigation bar */
 .topnav {
+  border-radius: 10px;
   background-color: #333;
   overflow: hidden;
 }
@@ -162,20 +164,21 @@ body {
 }
 
 /* Box with info just to see how it looks */
-.Box1,
-.Box2 {
-  width: 400px;
-  height: 90px;
+.Box1 {
+  border-radius: 10px;
+  width: 350px;
+  height: 40px;
   padding: 100px;
   border: 5px solid gray;
-  position: absolute;
+  position: relative;
   background-color: #333;
   overflow: hidden;
 }
 
 /* Position of the box */
-.P1,
-.P2 {
+.P1 {
+  font-size: 15px;
+  font-family: Arial, Helvetica, sans-serif;
   position: relative;
   color: white;
   right: 20%;
@@ -219,7 +222,8 @@ input[type="submit"]:hover {
   position: relative;
   width: 500px;
   top: 20px;
-  left: 28%;
+  top: -15px;
+  left: -20px;
   border-radius: 5px;
   background-color: #f2f2f2;
   padding: 20px;
@@ -228,5 +232,26 @@ input[type="submit"]:hover {
 /* location of the form title in the middle top */
 .Form {
   position: relative;
-  left: 40%;
+  left: 35%;
+}
+
+.alert {
+  width: 40%;
+  position: relative;
+  left: 30%;
+  background-color: #0c9965;
+  padding: 5px 5px;
+  border-radius: 5px;
+  text-align: center;
+  color: white;
+  font-size: 20px;
+  display: none;
+}
+
+.h2 {
+  font-size: 40px;
+}
+
+.p5 {
+  font-size: 20px;
 }

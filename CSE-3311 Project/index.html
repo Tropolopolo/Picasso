@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="style.css" />
     <title>Picaso</title>
   </head>
-  <body>
+  <body id="body">
     <!-- The top navigation bar -->
     <div class="topnav">
       <!-- Project name = Picasso -->
@@ -27,18 +27,35 @@
           </div>
           <!-- Form -->
           <div class="container">
-            <form action="action_page.php">
-              <label for="fname">Project Name &emsp;</label>
-              <input type="text" placeholder="Your Project Name" />
+            <form action="" id="Form">
+              <div class="alert">Form sent</div>
+              <label for="Pname">Project Name &emsp;</label>
+              <input
+                type="text"
+                id="ProjectName"
+                placeholder="Your Project Name"
+              />
               <br />
               <label for="Address">Address &emsp;&emsp;&ensp;&ensp;</label>
-              <input type="text" placeholder="Address of the Project" />
+              <input
+                type="text"
+                id="Address"
+                placeholder="Address of the Project"
+              />
               <br />
               <label for="Manager">Project Manager</label>
-              <input type="text" placeholder="Name of Project Manager" />
+              <input
+                type="text"
+                id="ProjectManager"
+                placeholder="Name of Project Manager"
+              />
               <br />
               <label for="Material">Matirials Used &ensp;</label>
-              <input type="text" placeholder="Name of Materials Used" />
+              <input
+                type="text"
+                id="MatsUsed"
+                placeholder="Name of Materials Used"
+              />
               <br />
               <input type="submit" value="Submit" />
             </form>
@@ -47,7 +64,7 @@
       </div>
       <!-- Add Project Button to open form in a new page -->
       <a
-        href="http://127.0.0.1:5555/HTML/CSE-3311%20Project/form.html"
+        href="http://127.0.0.1:5555/form.html"
         target="_"
         style="float: right"
         class="AddButton"
@@ -56,38 +73,17 @@
       <!-- Dropdown menu -->
       <div class="dropdown">
         <button class="dropbtn">Projects</button>
-        <div class="dropdown-content">
-          <a href="#">Project-1</a>
-          <a href="#">Project-2</a>
+        <div class="dropdown-content" id="dropdown-content">
+          <!-- <a href="#">Project-1</a>
+          <a href="#">Project-2</a> -->
         </div>
       </div>
     </div>
     <br />
     <br />
-    <div class="Box1">
-      <div class="P1">
-        <h2>Project1</h2>
-        <h3>Building-1</h3>
-        <p>
-          Address : 4000 Irving, Texas <br /><br />
-          Project Manager: Anmol Shrestha <br /><br />
-          Materials used : Flat, Semiglass, Egg-Shell
-        </p>
-      </div>
     </div>
-    <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
-    <br /><br /><br /><br />
-    <div class="Box2">
-      <div class="P2">
-        <h2>Project2</h2>
-        <h3>Building-2</h3>
-        <p>
-          Address : 4001 Irving, Texas <br /><br />
-          Project Manager: Paul Koomey <br /><br />
-          Materials used : Flat, Semiglass, Egg-Shell
-        </p>
-      </div>
-    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/7.14.1-0/firebase.js"></script>
+    <script src="server.js"></script>
     <script src="node.js"></script>
   </body>
 </html>

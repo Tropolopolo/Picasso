@@ -1,5 +1,5 @@
 //Youtube video used = https://www.youtube.com/watch?v=RAWHXRTKTHw
-
+//*************************************************Firebase configuration********************************************************//
 const firebaseConfig = {
   apiKey: "AIzaSyBganeN22quF9d0vAqJeAgYr9BCQyioKeg",
   authDomain: "picasso-2f8a6.firebaseapp.com",
@@ -15,59 +15,97 @@ firebase.initializeApp(firebaseConfig);
 
 //referencing a database named "Picasso"
 //if it does not exists, it is created
-const formDB = firebase.database().ref("Picasso");
-formDB.on("value",getData,errData);
+let database = firebase.database();
 
-//listening to when the submit button is pressed
+
+//listening to when the submit button is pressed in the form
 document.getElementById("Form").addEventListener("submit",submitForm);
 
+database.ref("Picasso").on("value",getData,errData);
 
+//*************************************************Get Data Function*************************************************************//
 //To get data
 function getData(data){
-  var ProjectName;
-  var Address;
-  var ProjectManager;
-  var MatsUsed;
+  let l = document.querySelectorAll(".list");
+  let b = document.querySelectorAll(".Box1");
+  let dropList = document.querySelectorAll(".dropDown");
+
+  for(var j=0; j<b.length; j++ ){
+    //l[i].remove();
+    b[j].remove();
+    window.location.reload();
+    //dropList[j].remove();
+  }
+
+  let ProjectName;
+  let Address;
+  let ProjectManager;
+  let MatsUsed;
   //console.log(data.val());
-  var objectData = data.val();
-  var keys = Object.keys(objectData);
-  var i;
-  
+  let objectData = data.val();
+  let keys = Object.keys(objectData);
   //console.log(keys);
-  for(i = 0; i < keys.length; i++)
+
+  for(var i = 0; i < keys.length; i++)
   {
 
-    var k = keys[i];
+    let k = keys[i];
     ProjectName = objectData[k].ProjectName;
     Address = objectData[k].Address;
     ProjectManager = objectData[k].ProjectManager;
     MatsUsed = objectData[k].MatsUsed;
 
     //Creating a list to put the data in
-    var li = document.createElement("ul");
+    let li = document.createElement("ul");
+    li.className="list";
     li.id="list";
-    li.innerHTML="Project Name: " + ProjectName + "</br></br>" +
-                  "Address: " + Address + "</br></br>" +
-                  "Project Manager: " + ProjectManager + "</br></br>" +
-                  " Materials Used: " + MatsUsed + "</br></br>";
+    li.innerHTML='<table class="projectTable">' +
+                 '<tr>'+'<th>'+"Project Name: "+'</th>'+'<th>'+ ProjectName +'</th>'+'</tr>'+
+                 '<tr>'+'<th>'+"Address: " +'</th>'+'<th>'+Address+'</th>' + '</tr>'+
+                 '<tr>'+'<th>'+"Project Manager: " + '</th>'+'<th>'+ProjectManager +'</th>'+ '</tr>'+
+                 '<tr>'+'<th>'+" Materials Used: "+ '</th>'+'<th>' + MatsUsed+'</th>' + '</tr>'+
+                 '</table>';
 
-    //All this is just to put the data in a box in html, style is in css
-    var toAdd = document.createDocumentFragment();
-    var newDiv = document.createElement('div');
-    newDiv.id = "Box";
-    newDiv.className = 'Box1';
-    var Para = document.createElement('div');
-    Para.className="P1"
-    Para.appendChild(li);
-    newDiv.appendChild(Para);
-    toAdd.appendChild(newDiv);
-    document.getElementById('body').appendChild(toAdd);
+  //Creating a box
+  //All this is just to put the data in a box in html, style is in css as Box1 and P1
+  //toAdd is a document fragment to put the box in
+  //var toAddBox = document.createDocumentFragment();
+  //creating a div so that we can give the box an id and class
+  let newDiv = document.createElement('div');
+  newDiv.id = "Box";
+  newDiv.className = 'Box1'; 
+
+  let cl = document.createElement("button");
+  cl.className="close";
+  cl.textContent="X";
+  cl.addEventListener("click", function(){
+    database.ref('Picasso/' + k).remove();
+    
+    //window.location.reload();
+  });
+  
+  //creating a div to put the retrived data in
+  let Para = document.createElement('div');
+  Para.className="P1"
+  //appending to html
+  Para.appendChild(li);
+  newDiv.appendChild(Para);
+  newDiv.appendChild(cl);
+  //toAddBox.appendChild(newDiv);
+  document.getElementById('body').appendChild(newDiv);
+
+
+  //Drop down menu to see all the current Projects
+  let dropDown = document.createElement("a");
+  var value = document.createTextNode(ProjectName);
+  dropDown.href="#";
+  dropDown.append(value);
+  const element = document.getElementById("dropdown-content");
+  element.appendChild(dropDown);
 
   }
   
 }
-
-
 //To get data
 function errData(err){
   console.log("Error");
@@ -75,19 +113,20 @@ function errData(err){
 
 }
 
-
+//***********************************************Function to submit form*********************************************************//
 //function to execute when the submit button is pressed
 // e is for event
 function submitForm(e){
   e.preventDefault();
+  
   //getting all the data from the form
-  var data = {
+  let data = {
     ProjectName:getElementVal("ProjectName"),
     Address:getElementVal("Address"),
     ProjectManager:getElementVal("ProjectManager"),
     MatsUsed:getElementVal("MatsUsed")
   }
-
+  let formDB = database.ref("/Picasso/");
   //pushing the data to the databases
   formDB.push(data);
 
@@ -96,11 +135,10 @@ function submitForm(e){
 
   //resetting the form
   document.getElementById("Form").reset();
-  window.location.reload();
   
 }
 
-
+//*******************************************Function to show sent alert*********************************************************//
 //function to show the alert
 function showAlert(){
   document.querySelector(".alert").style.display="block";
@@ -113,3 +151,5 @@ function showAlert(){
 const getElementVal = (id)=>{
   return document.getElementById(id).value;
 }
+
+

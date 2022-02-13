@@ -25,16 +25,4 @@ window.onclick = function(event) {
   }
 }
 
-const array = ["Project-1", "Project-2"];
-var i=0;
-while(i<array.length)
-{
-  var dropDown = document.createElement("a");
-  var value = document.createTextNode(array[i]);
-  dropDown.href="#";
-  dropDown.append(value);
 
-  const element = document.getElementById("dropdown-content");
-  element.appendChild(dropDown);
-  i++;
-}

@@ -1,6 +1,6 @@
 /* Body of the page with a background picture */
 body {
-  background-color: #333;
+  background-color: rgb(0, 0, 0);
   background-image: url("wall-paint.jpg");
   height: 500px; /* You must set a specified height */
   background-position: center; /* Center the image */
@@ -53,7 +53,7 @@ body {
 /* style for addbutton */
 .AddProject {
   position: relative;
-  left: 65%;
+  left: 81%;
   background-color: #4caf50;
   color: white;
   padding: 16px;
@@ -118,15 +118,14 @@ body {
 .dropdown-content {
   display: none;
   position: absolute;
-  background-color: #f9f9f9;
+  background-color: #201f1f;
   min-width: 100px;
-  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
   z-index: 1;
 }
 
 /* Links inside the dropdown */
 .dropdown-content a {
-  color: black;
+  color: white;
   padding: 12px 16px;
   text-decoration: none;
   display: block;
@@ -169,9 +168,9 @@ body {
   width: 350px;
   height: 40px;
   padding: 100px;
-  border: 5px solid gray;
+  border: 5px solid rgb(61, 61, 61);
   position: relative;
-  background-color: #333;
+  background-color: rgb(128, 125, 125);
   overflow: hidden;
 }
 
@@ -254,4 +253,48 @@ input[type="submit"]:hover {
 
 .p5 {
   font-size: 20px;
+}
+
+.close {
+  cursor: pointer;
+  position: absolute;
+  top: 8%;
+  right: 0%;
+  transform: translate(0%, -50%);
+}
+
+.close:hover {
+  background: #bbb;
+}
+
+.num {
+  cursor: pointer;
+  position: absolute;
+  font-size: 30px;
+  top: 10%;
+  left: 0%;
+  padding: 17px 20px;
+  transform: translate(0%, -50%);
+}
+
+.num:hover {
+  background: #bbb;
+}
+
+table,
+th,
+td {
+  border: 2px solid rgb(2, 2, 2);
+  border-radius: 5px;
+}
+
+.list {
+  position: relative;
+  right: 20%;
+}
+
+.projectTable {
+  width: 150%;
+  border-radius: 10px;
+  color: rgb(0, 0, 0);
 }

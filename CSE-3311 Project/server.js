@@ -26,15 +26,16 @@ database.ref("Picasso").on("value",getData,errData);
 //*************************************************Get Data Function*************************************************************//
 //To get data
 function getData(data){
-  let l = document.querySelectorAll(".list");
+  //data.preventDefault();
+  //let l = document.querySelectorAll(".list");
   let b = document.querySelectorAll(".Box1");
   let dropList = document.querySelectorAll(".dropDown");
 
   for(var j=0; j<b.length; j++ ){
     //l[i].remove();
     b[j].remove();
-    window.location.reload();
-    //dropList[j].remove();
+    //window.location.reload();
+    dropList[j].remove();
   }
 
   let ProjectName;
@@ -97,6 +98,7 @@ function getData(data){
 
   //Drop down menu to see all the current Projects
   let dropDown = document.createElement("a");
+  dropDown.className="dropDown";
   var value = document.createTextNode(ProjectName);
   dropDown.href="#";
   dropDown.append(value);

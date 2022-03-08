@@ -29,35 +29,114 @@
           <div class="container">
             <form action="" id="Form">
               <div class="alert">Form sent</div>
-              <label for="Pname">Project Name &emsp;</label>
-              <input
-                type="text"
-                id="ProjectName"
-                placeholder="Your Project Name"
-              />
-              <br />
-              <label for="Address">Address &emsp;&emsp;&ensp;&ensp;</label>
-              <input
-                type="text"
-                id="Address"
-                placeholder="Address of the Project"
-              />
-              <br />
-              <label for="Manager">Project Manager</label>
-              <input
-                type="text"
-                id="ProjectManager"
-                placeholder="Name of Project Manager"
-              />
-              <br />
-              <label for="Material">Matirials Used &ensp;</label>
-              <input
-                type="text"
-                id="MatsUsed"
-                placeholder="Name of Materials Used"
-              />
-              <br />
-              <input type="submit" value="Submit"/>
+              <div class ="tab">
+                <label for="Pname">Project Name &emsp;</label> <br>
+                <input
+                  type="text"
+                  id="ProjectName"
+                  placeholder="Your Project Name"
+                />
+                <br />
+                <label for="ContractorName">Contractor Name &emsp;&emsp;&ensp;&ensp;</label>
+                <input
+                  type="text"
+                  id="ContractorName"
+                  placeholder="Address of the Project"
+                />
+                <br />
+                <label for="ContractorPhoneNum">Contractor Phone Number</label>
+                <input
+                  type="text"
+                  id="ContractorPN"
+                  placeholder="Name of Project Manager"
+                />
+                <br />
+                <label for="ProjectManager">Project Manager Name &ensp;</label>
+                <input
+                  type="text"
+                  id="ProjectManager"
+                  placeholder="Name of Materials Used"
+                />
+                <br />
+                <label for="ProjectManagerPhNumber">Project Manager Phone Number &ensp;</label>
+                <input
+                  type="text"
+                  id="ProjectManagerPN"
+                  placeholder="Name of Materials Used"
+                />
+                <br />
+              </div>
+              <div class="tab">
+                <label for="ProjectManager">Paint Store Manager name &ensp;</label>
+                <input
+                  type="text"
+                  id="PaintStoreManagerName"
+                  placeholder="Name of Materials Used"
+                />
+                <br />
+                <label for="ProjectManager">Paint Store Manager Phone Number &ensp;</label>
+                <input
+                  type="text"
+                  id="PaintStoreManagerPN"
+                  placeholder="Name of Materials Used"
+                />
+                <br />
+                <label for="ProjectManager">Lead Painter Name &ensp;</label><br>
+                <input
+                  type="text"
+                  id="leadPinterName"
+                  placeholder="Name of Materials Used"
+                />
+                <br />
+                <label for="ProjectManager">Lead Painter Phone Number &ensp;</label>
+                <input
+                  type="text"
+                  id="leadPinterPN"
+                  placeholder="Name of Materials Used"
+                />
+                <br />
+                <label for="ProjectManager">Paint Store Name &ensp;</label><br>
+                <input
+                  type="text"
+                  id="paintStoreName"
+                  placeholder="Name of Materials Used"
+                />
+                <br />
+                <label for="ProjectManager">Paint Store Address &ensp;</label><br>
+                <input
+                  type="text"
+                  id="paintStoreAddress"
+                  placeholder="Name of Materials Used"
+                />
+                <br />
+                <label for="ProjectManager">Paint Store Phone Number &ensp;</label>
+                <input
+                  type="text"
+                  id="paintStorePN"
+                  placeholder="Name of Materials Used"
+                />
+                <br />
+                <label for="ProjectManager">Project Location Address &ensp;</label>
+                <input
+                  type="text"
+                  id="projectAddress"
+                  placeholder="Name of Materials Used"
+                />
+                <br />
+                
+              </div>
+              <div style="overflow:auto;">
+                <div style="float:right;">
+                  <button type="button" id="prevBtn" onclick="nextPrev(-1)">Previous</button>
+                  <button type="button" id="nextBtn" onclick="nextPrev(1)">Next</button>
+                  <input type="submit" value="Submit" id="submitId"></input>
+                </div>
+              </div>
+              <div style="text-align:center;margin-top:40px;">
+                <span class="step"></span>
+                <span class="step"></span>
+              </div>
+              <!-- <input type="submit" value="Submit"></input> -->
             </form>
           </div>
         </div>
@@ -68,6 +147,7 @@
         </div>
       </div>
     </div>
+    
     <br />
     <br />
     </div>

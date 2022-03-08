@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style-form.css" />
+    <title>Picaso</title>
+  </head>
+  <body id="body">
+    <div id="index">
+      <a href="/CSE-3311 Project/index.html">Go To Index</a>
+    </div>
+    <div class="popForm">
+      <form id="Form" class="conForm">
+        <h1>Login</h1>
+        <label for="username" class="myLabel"><b>Username</b></label>
+        <input
+          type="text"
+          placeholder="Enter Username"
+          name="username"
+          required
+          class="myInput"
+          id="username"
+        />
+        <label for="email" class="myLabel"><b>Email</b></label>
+        <input
+          type="text"
+          placeholder="Enter Email"
+          name="email"
+          class="myInput"
+          id="email"
+        />
+        <label for="psw" class="myLabel"><b>Password</b></label>
+        <input
+          type="text"
+          placeholder="Enter Password"
+          name="psw"
+          required
+          class="myInput"
+          id="pass"
+        />
+        <label for="button" class="myLabel"></label>
+        <button onclick="login()" class="CU-btn">Login</button>
+        <button onclick="createUser()" class="CU-btn">Create User</button>
+      </form>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/7.14.1-0/firebase.js"></script>
+    <script src="valid.js"></script>
+  </body>
+</html>

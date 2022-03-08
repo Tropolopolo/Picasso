@@ -36,7 +36,7 @@ body {
 
 /* Close Button */
 .close {
-  color: #aaaaaa;
+  color: grey;
   float: right;
   font-size: 28px;
   font-weight: bold;
@@ -45,7 +45,7 @@ body {
 /* Hover over the close button */
 .close:hover,
 .close:focus {
-  color: #000;
+  color: black;
   text-decoration: none;
   cursor: pointer;
 }
@@ -166,7 +166,17 @@ body {
 .Box1 {
   border-radius: 10px;
   width: 350px;
-  height: 40px;
+  height: 50px;
+  padding: 100px;
+  border: 5px solid rgb(61, 61, 61);
+  position: relative;
+  background-color: rgb(128, 125, 125);
+  overflow: hidden;
+}
+.Box2 {
+  border-radius: 10px;
+  width: 350px;
+  height: 200px;
   padding: 100px;
   border: 5px solid rgb(61, 61, 61);
   position: relative;
@@ -202,7 +212,6 @@ textarea {
 /* Style the submit button*/
 input[type="submit"] {
   position: relative;
-  left: 40%;
   background-color: #04aa6d;
   color: white;
   padding: 12px 20px;
@@ -234,6 +243,47 @@ input[type="submit"]:hover {
   left: 35%;
 }
 
+.tab {
+  display: none;
+}
+input.invalid {
+  background-color: #ffdddd;
+}
+button {
+  position: relative;
+  background-color: #04aa6d;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button:hover {
+  opacity: 0.8;
+}
+
+#prevBtn {
+  background-color: #bbbbbb;
+}
+
+.step {
+  height: 15px;
+  width: 15px;
+  margin: 0 2px;
+  background-color: #bbbbbb;
+  border: none;
+  border-radius: 50%;
+  display: inline-block;
+  opacity: 0.5;
+}
+.step.active {
+  opacity: 1;
+}
+.step.finish {
+  background-color: #04aa6d;
+}
+
 .alert {
   width: 40%;
   position: relative;
@@ -255,15 +305,15 @@ input[type="submit"]:hover {
   font-size: 20px;
 }
 
-.close {
+.close1 {
   cursor: pointer;
   position: absolute;
-  top: 8%;
-  right: 0%;
+  top: 62%;
+  left: 0%;
   transform: translate(0%, -50%);
 }
 
-.close:hover {
+.close1:hover {
   background: #bbb;
 }
 
@@ -297,4 +347,14 @@ td {
   width: 150%;
   border-radius: 10px;
   color: rgb(0, 0, 0);
+}
+
+.seeMore {
+  position: relative;
+  top: -200%;
+  right: -100%;
+  background-color: #3e8e41;
+}
+.seeMore:hover {
+  background-color: white;
 }

@@ -12,7 +12,7 @@ const firebaseConfig = {
 };
 //reference your database
 firebase.initializeApp(firebaseConfig);
-
+// let id = localStorage.getItem("uid");
 //referencing a database named "Picasso"
 //if it does not exists, it is created
 let database = firebase.database();
@@ -21,7 +21,7 @@ let database = firebase.database();
 //listening to when the submit button is pressed in the form
 document.getElementById("Form").addEventListener("submit",submitForm);
 
-database.ref("Picasso").on("value",getData,errData);
+database.ref("Picasso/").on("value",getData,errData);
 
 //*************************************************Get Data Function*************************************************************//
 //To get data
@@ -83,7 +83,7 @@ function getData(data){
   cl.textContent="Delete Project";
   cl.addEventListener("click", function(){
     if (confirm("Are you sure you want to delete the project")) {
-      database.ref('Picasso/' + k).remove();
+      database.ref('Picasso/'+ k).remove();
     } else {
     }
     
@@ -98,7 +98,7 @@ function getData(data){
   //appending to html
   let seeMore = document.createElement("button");
   seeMore.className="seeMore";
-  seeMore.innerHTML="<a href='http://127.0.0.1:5500/form.html' style='text-decoration:none;' alt='Broken Link' target='_blank'>see More</a>";
+  seeMore.innerHTML="<a href='info.html' style='text-decoration:none;' alt='Broken Link' target='_blank'>see More</a>";
   seeMore.onclick=function(){
     localStorage.setItem("value",k);
     console.log(k);

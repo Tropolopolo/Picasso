@@ -11,10 +11,13 @@
     <!-- The top navigation bar -->
     <div class="topnav">
       <!-- Project name = Picasso -->
-      <a class="active" href="#home"><h1>Picasso</h1></a>
+      <button class="active" style="font-size:20px">Picasso</button>
       <!-- Form in Modal -->
       <button class="AddProject" id="myBtn">
         <span>&#43;</span> Add Project(Modal)
+      </button>
+      <button class="logout" id="log_out" onclick="out()">
+        Logout
       </button>
       <!-- The Modal -->
       <div id="myModal" class="modal">
@@ -42,11 +45,12 @@
                   type="text"
                   id="ContractorName"
                   placeholder="Address of the Project"
+  
                 />
                 <br />
                 <label for="ContractorPhoneNum">Contractor Phone Number</label>
                 <input
-                  type="text"
+                  type="number"
                   id="ContractorPN"
                   placeholder="Name of Project Manager"
                 />
@@ -56,11 +60,12 @@
                   type="text"
                   id="ProjectManager"
                   placeholder="Name of Materials Used"
+   
                 />
                 <br />
                 <label for="ProjectManagerPhNumber">Project Manager Phone Number &ensp;</label>
                 <input
-                  type="text"
+                  type="number"
                   id="ProjectManagerPN"
                   placeholder="Name of Materials Used"
                 />
@@ -72,11 +77,12 @@
                   type="text"
                   id="PaintStoreManagerName"
                   placeholder="Name of Materials Used"
+    
                 />
                 <br />
                 <label for="ProjectManager">Paint Store Manager Phone Number &ensp;</label>
                 <input
-                  type="text"
+                  type="number"
                   id="PaintStoreManagerPN"
                   placeholder="Name of Materials Used"
                 />
@@ -86,11 +92,12 @@
                   type="text"
                   id="leadPinterName"
                   placeholder="Name of Materials Used"
+
                 />
                 <br />
                 <label for="ProjectManager">Lead Painter Phone Number &ensp;</label>
                 <input
-                  type="text"
+                  type="number"
                   id="leadPinterPN"
                   placeholder="Name of Materials Used"
                 />
@@ -111,7 +118,7 @@
                 <br />
                 <label for="ProjectManager">Paint Store Phone Number &ensp;</label>
                 <input
-                  type="text"
+                  type="number"
                   id="paintStorePN"
                   placeholder="Name of Materials Used"
                 />
@@ -154,5 +161,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/7.14.1-0/firebase.js"></script>
     <script src="server.js"></script>
     <script src="node.js"></script>
+    
   </body>
 </html>

@@ -16,8 +16,9 @@ firebase.initializeApp(firebaseConfig);
 //referencing a database named "Picasso"
 //if it does not exists, it is created
 let database = firebase.database();
+let child = localStorage.getItem("uid");
 
-database.ref("Picasso").on("value",getData,errData);
+database.ref("Picasso").child(child).on("value",getData,errData);
 
 //*************************************************Get Data Function*************************************************************//
 //To get data

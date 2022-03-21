@@ -16,12 +16,12 @@ firebase.initializeApp(firebaseConfig);
 //referencing a database named "Picasso"
 //if it does not exists, it is created
 let database = firebase.database();
-
+let child = localStorage.getItem("uid");
 
 //listening to when the submit button is pressed in the form
 document.getElementById("Form").addEventListener("submit",submitForm);
 
-database.ref("Picasso/").on("value",getData,errData);
+database.ref("Picasso").child(child).on("value",getData,errData);
 
 //*************************************************Get Data Function*************************************************************//
 //To get data
@@ -83,7 +83,7 @@ function getData(data){
   cl.textContent="Delete Project";
   cl.addEventListener("click", function(){
     if (confirm("Are you sure you want to delete the project")) {
-      database.ref('Picasso/'+ k).remove();
+      database.ref('Picasso').child(child).child(k).remove();
     } else {
     }
     
@@ -98,8 +98,9 @@ function getData(data){
   //appending to html
   let seeMore = document.createElement("button");
   seeMore.className="seeMore";
-  seeMore.innerHTML="<a href='info.html' style='text-decoration:none;' alt='Broken Link' target='_blank'>see More</a>";
+  seeMore.innerHTML="see more";
   seeMore.onclick=function(){
+    location.href = 'info.html'
     localStorage.setItem("value",k);
     console.log(k);
   };
@@ -154,7 +155,7 @@ function submitForm(e){
     paintStorePN:getElementVal("paintStorePN"),
     projectAddress:getElementVal("projectAddress")
   }
-  let formDB = database.ref("Picasso/");
+  let formDB = database.ref("Picasso").child(child);
   //pushing the data to the databases
   formDB.push(data);
 
@@ -256,4 +257,13 @@ function fixStepIndicator(n) {
 }
 
 
+function out(){
+  firebase.auth().signOut().then(() => {
+    location.href = 'login.html'
 
+  }).catch((error) => {
+
+  });
+  //window.alert("sdfsdfgefgsfsg");
+  //location.href = 'login.html'
+}

@@ -6,7 +6,16 @@ body {
   background-repeat: repeat; /* Do not repeat the image */
   background-size: cover; /* Resize the background image to cover the entire container */
   font-size: 16px;
-  font: "Arial";
+  font: Arial, Helvetica, sans-serif;
+}
+
+.containerdiv {
+  margin: auto;
+  max-width: 400px;
+  border: 5px solid rgb(229, 239, 243);
+  padding: 5px;
+  border-radius: 10px;
+  box-shadow: -10px 10px 30px 10px rgb(193, 193, 194);
 }
 
 input,
@@ -43,16 +52,18 @@ button {
 
 .main button,
 .loggedin button {
+  position: relative;
   background: #5d8ffc;
   color: #fff;
   border: 1px solid #5d8ffc;
   border-radius: 5px;
   padding: 15px;
   display: block;
-  width: 90%;
+  width: 300px;
   transition: 0.3s;
   -webkit-transition: 0.3s;
   -moz-transition: 0.3s;
+  left: -100px;
 }
 
 .main button:hover,
@@ -133,7 +144,8 @@ button {
 input[type="text"],
 input[type="email"],
 input[type="password"] {
-  width: 100%; /* Full width */
+  position: relative;
+  width: 300px; /* Full width */
   padding: 12px; /* Some padding */
   border: 1px solid #ccc; /* Gray border */
   border-radius: 4px; /* Rounded borders */
@@ -141,6 +153,7 @@ input[type="password"] {
   margin-top: 6px; /* Add a top margin */
   margin-bottom: 16px; /* Bottom margin */
   resize: vertical; /* Allow the user to vertically resize the textarea (not horizontally) */
+  left: -100px;
 }
 
 .container {
@@ -177,7 +190,7 @@ input[type="password"] {
 
 .heading {
   /* font-family: "Nunito", sans-serif; */
-  color: #4979e0;
+  color: #5d8ffc;
   font-size: 50px;
   position: absolute;
   top: -20px;

@@ -63,9 +63,9 @@ body {
 }
 
 /* hover for addbutton */
-.AddProject a:hover {
+.AddProject:hover {
   display: block;
-  background-color: #f1f1f1;
+  background-color: rgb(70, 107, 161);
 }
 
 .logout {
@@ -80,7 +80,7 @@ body {
 }
 
 /* hover for addbutton */
-.logout a:hover {
+.logout:hover {
   display: block;
   background-color: rgb(70, 107, 161);
 }
@@ -88,7 +88,6 @@ body {
 /* This is the for the top navigation button */
 /*background color for the navigation bar */
 .topnav {
-  border: 100%;
   background-color: #5d8ffc;
   overflow: hidden;
 }
@@ -103,9 +102,9 @@ body {
 }
 
 /* hover for Picasso*/
-.topnav button:hover {
+.active:hover {
   background-color: #ddd;
-  color: #5d8ffc;
+  color: #fff;
 }
 
 /* also gives picasso style */
@@ -138,7 +137,7 @@ body {
   position: absolute;
   background-color: rgb(15, 65, 112);
   min-width: 100px;
-  top: 100px;
+  top: 50px;
   z-index: 1;
 }
 
@@ -152,7 +151,7 @@ body {
 
 /* Change color of dropdown links on hover */
 .dropdown-content a:hover {
-  background-color: #f1f1f1;
+  background-color: #0d2c66;
 }
 
 /* Show the dropdown menu on hover */
@@ -165,41 +164,37 @@ body {
   background-color: rgb(70, 107, 161);
 }
 
-/* style for addbutton */
-.AddButton {
-  background-color: #4caf50;
-  color: white;
-  padding: 16px;
-  font-size: 16px;
-  border: none;
-  cursor: pointer;
-}
-
-/* hover for addbutton */
-.AddButton a:hover {
-  display: block;
-  background-color: #f1f1f1;
-}
-
 /* Box with info just to see how it looks */
 .Box1 {
   border-radius: 10px;
   width: 350px;
   height: 50px;
   padding: 100px;
-  border: 5px solid rgb(61, 61, 61);
+  border: 5px solid rgb(160, 158, 158);
   position: relative;
-  background-color: rgb(128, 125, 125);
+  background-color: rgb(167, 164, 161);
   overflow: hidden;
 }
+
 .Box2 {
   border-radius: 10px;
   width: 350px;
-  height: 200px;
+  height: 170px;
   padding: 100px;
-  border: 5px solid rgb(61, 61, 61);
+  border: 5px solid rgb(160, 158, 158);
   position: relative;
-  background-color: rgb(128, 125, 125);
+  background-color: rgb(167, 164, 161);
+  overflow: hidden;
+}
+
+.Box3 {
+  border-radius: 10px;
+  width: 350px;
+  height: 170px;
+  padding: 100px;
+  border: 5px solid rgb(160, 158, 158);
+  position: relative;
+  background-color: rgb(167, 164, 161);
   overflow: hidden;
 }
 
@@ -232,7 +227,7 @@ textarea {
 /* Style the submit button*/
 input[type="submit"] {
   position: relative;
-  background-color: #04aa6d;
+  background-color: #5d8ffc;
   color: white;
   padding: 12px 20px;
   border: none;
@@ -242,7 +237,7 @@ input[type="submit"] {
 
 /* When moving the mouse over the submit button, add a darker green color */
 input[type="submit"]:hover {
-  background-color: #45a049;
+  background-color: #284d9e;
 }
 
 /* Add a background color and some padding around the form */
@@ -271,7 +266,7 @@ input.invalid {
 }
 button {
   position: relative;
-  background-color: #04aa6d;
+  background-color: #5d8ffc;
   color: white;
   padding: 12px 20px;
   border: none;
@@ -301,14 +296,14 @@ button:hover {
   opacity: 1;
 }
 .step.finish {
-  background-color: #04aa6d;
+  background-color: #5d8ffc;
 }
 
 .alert {
   width: 40%;
   position: relative;
   left: 30%;
-  background-color: #0c9965;
+  background-color: #5d8ffc;
   padding: 5px 5px;
   border-radius: 5px;
   text-align: center;
@@ -330,12 +325,12 @@ button:hover {
   position: absolute;
   top: 62%;
   left: 0%;
-  background-color: #3e8e41;
+  background-color: rgb(126, 123, 121);
   transform: translate(0%, -50%);
 }
 
 .close1:hover {
-  background: #bbb;
+  background: rgb(71, 67, 67);
 }
 
 .num {
@@ -374,8 +369,8 @@ td {
   position: relative;
   top: -200%;
   right: -100%;
-  background-color: #3e8e41;
+  background-color: rgb(126, 123, 121);
 }
 .seeMore:hover {
-  background-color: #bbb;
+  background-color: rgb(71, 67, 67);
 }

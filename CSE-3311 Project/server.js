@@ -113,13 +113,16 @@ function getData(data){
   // newDiv.appendChild(dropDownDiv);
   //toAddBox.appendChild(newDiv);
   document.getElementById('body').appendChild(newDiv);
+  let p = document.createElement('p');
+  p.innerHTML="</br>";
+  document.getElementById('body').appendChild(p);
 
 
   //Drop down menu to see all the current Projects
   let dropDown = document.createElement("a");
   dropDown.className="dropDown";
   var value = document.createTextNode(ProjectName);
-  dropDown.href="#";
+  dropDown.href="info.html";
   dropDown.append(value);
   const element = document.getElementById("dropdown-content");
   element.appendChild(dropDown);
@@ -267,3 +270,4 @@ function out(){
   //window.alert("sdfsdfgefgsfsg");
   //location.href = 'login.html'
 }
+

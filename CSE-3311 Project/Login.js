@@ -76,6 +76,8 @@ function signup(){
   .then((userCredential) => {
     // Signed in 
     var user = userCredential.user;
+    window.alert("user");
+
     // ...
   })
   .catch((error) => {

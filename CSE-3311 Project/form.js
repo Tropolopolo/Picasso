@@ -71,14 +71,14 @@ function getData(data){
                  '<tr>'+'<th>'+"Contractor Name: " +'</th>'+'<th>'+ContractorName+'</th>' + '</tr>'+
                  '<tr>'+'<th>'+"Contractor PN: " + '</th>'+'<th>'+ContractorPN +'</th>'+ '</tr>'+
                  '<tr>'+'<th>'+"Project Manager: "+ '</th>'+'<th>' +ProjectManager+'</th>' + '</tr>'+
-                 '<tr>'+'<th>'+"ProjectManager PN: "+'</th>'+'<th>'+ProjectManagerPN +'</th>'+'</tr>'+
-                 '<tr>'+'<th>'+"PaintStoreManager Name: " +'</th>'+'<th>'+PaintStoreManagerName+'</th>' + '</tr>'+
-                 '<tr>'+'<th>'+"PaintStoreManager PN: " + '</th>'+'<th>'+PaintStoreManagerPN +'</th>'+ '</tr>'+
-                 '<tr>'+'<th>'+"leadPinter Name: "+ '</th>'+'<th>' + leadPinterName+'</th>' + '</tr>'+
-                 '<tr>'+'<th>'+"leadPinter PN: "+ '</th>'+'<th>' + leadPinterPN+'</th>' + '</tr>'+
-                 '<tr>'+'<th>'+"paintStore Name: " + '</th>'+'<th>'+paintStoreName +'</th>'+ '</tr>'+
-                 '<tr>'+'<th>'+"paintStore Address: "+ '</th>'+'<th>' + paintStoreAddress+'</th>' + '</tr>'+
-                 '<tr>'+'<th>'+"paintStore PN: "+ '</th>'+'<th>' + paintStorePN+'</th>' + '</tr>'+
+                 '<tr>'+'<th>'+"Project Manager PN: "+'</th>'+'<th>'+ProjectManagerPN +'</th>'+'</tr>'+
+                 '<tr>'+'<th>'+"Paint Store Manager Name: " +'</th>'+'<th>'+PaintStoreManagerName+'</th>' + '</tr>'+
+                 '<tr>'+'<th>'+"Paint Store Manager PN: " + '</th>'+'<th>'+PaintStoreManagerPN +'</th>'+ '</tr>'+
+                 '<tr>'+'<th>'+"lead Painter Name: "+ '</th>'+'<th>' + leadPinterName+'</th>' + '</tr>'+
+                 '<tr>'+'<th>'+"lead Painter PN: "+ '</th>'+'<th>' + leadPinterPN+'</th>' + '</tr>'+
+                 '<tr>'+'<th>'+"paint Store Name: " + '</th>'+'<th>'+paintStoreName +'</th>'+ '</tr>'+
+                 '<tr>'+'<th>'+"paint Store Address: "+ '</th>'+'<th>' + paintStoreAddress+'</th>' + '</tr>'+
+                 '<tr>'+'<th>'+"paint Store PN: "+ '</th>'+'<th>' + paintStorePN+'</th>' + '</tr>'+
                  '<tr>'+'<th>'+"project Address: "+ '</th>'+'<th>' + projectAddress+'</th>' + '</tr>'
                  '</table>';
 
@@ -91,8 +91,9 @@ function getData(data){
   newDiv.id = "Box";
   newDiv.className = 'Box2';
 
-
-
+  let newDiv1 = document.createElement('div');
+  newDiv1.id = "Box3";
+  newDiv1.className = 'Box3';
   
   //creating a div to put the retrived data in
   let Para = document.createElement('div');
@@ -104,6 +105,7 @@ function getData(data){
   // newDiv.appendChild(dropDownDiv);
   //toAddBox.appendChild(newDiv);
   document.getElementById('body').appendChild(newDiv);
+  document.getElementById('body').appendChild(newDiv1);
 
 
   
@@ -112,4 +114,19 @@ function getData(data){
 function errData(err){
   console.log("Error");
   console.log(err);
+}
+
+function homepage(){
+  location.href = 'index.html';
+}
+
+function out(){
+  firebase.auth().signOut().then(() => {
+    location.href = 'login.html'
+
+  }).catch((error) => {
+
+  });
+  //window.alert("sdfsdfgefgsfsg");
+  //location.href = 'login.html'
 }

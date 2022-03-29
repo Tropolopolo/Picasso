@@ -323,7 +323,7 @@ button:hover {
 .close1 {
   cursor: pointer;
   position: absolute;
-  top: 62%;
+  top: 80%;
   left: 0%;
   background-color: rgb(126, 123, 121);
   transform: translate(0%, -50%);

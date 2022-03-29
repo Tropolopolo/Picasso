@@ -1,4 +1,3 @@
-//Youtube video used = https://www.youtube.com/watch?v=RAWHXRTKTHw
 //*************************************************Firebase configuration********************************************************//
 const firebaseConfig = {
   apiKey: "AIzaSyBganeN22quF9d0vAqJeAgYr9BCQyioKeg",
@@ -38,10 +37,11 @@ function getData(data){
     dropList[j].remove();
   }
 
-  let ProjectName;
-  let ContractorName;
-  let ProjectManager;
-  let projectAddress;
+  let ItemCategory;
+  let ItemName;
+  let ItemPrice;
+  let ItemNumber;
+  let AileNumber;
   //console.log(data.val());
   let objectData = data.val();
   let keys = Object.keys(objectData);
@@ -51,20 +51,22 @@ function getData(data){
   {
 
     let k = keys[i];
-    ProjectName           =objectData[k].ProjectName;
-    ContractorName        =objectData[k].ContractorName;
-    ProjectManager        =objectData[k].ProjectManager;
-    projectAddress        =objectData[k].projectAddress;
+    ItemCategory  =objectData[k].ItemCategory;
+    ItemName      =objectData[k].ItemName;
+    ItemPrice     =objectData[k].ItemPrice;
+    ItemNumber    =objectData[k].ItemNumber;
+    AileNumber    =objectData[k].AileNumber;
 
     //Creating a list to put the data in
     let li = document.createElement("ul");
     li.className="list";
     li.id="list";
     li.innerHTML='<table class="projectTable">' +
-                '<tr>'+'<th>'+"Project Name: "+'</th>'+'<th>'+ ProjectName +'</th>'+'</tr>'+
-                '<tr>'+'<th>'+"Contractor Name: " +'</th>'+'<th>'+ContractorName+'</th>' + '</tr>'+
-                '<tr>'+'<th>'+"Project Manager: "+ '</th>'+'<th>' +ProjectManager+'</th>' + '</tr>'+
-                '<tr>'+'<th>'+"project Address: "+ '</th>'+'<th>' + projectAddress+'</th>' + '</tr>'
+                '<tr>'+'<th>'+"Item Category: "+'</th>'+'<th>'+ ItemCategory +'</th>'+'</tr>'+
+                '<tr>'+'<th>'+"Item Name: " +'</th>'+'<th>'+ItemName+'</th>' + '</tr>'+
+                '<tr>'+'<th>'+"Item Price: "+ '</th>'+'<th>' +ItemPrice+'</th>' + '</tr>'+
+                '<tr>'+'<th>'+"Item Number: "+ '</th>'+'<th>' + ItemNumber+'</th>' + '</tr>'+
+                '<tr>'+'<th>'+"Aile Number: "+ '</th>'+'<th>' + AileNumber+'</th>' + '</tr>'+
                 '</table>';
 
   //Creating a box
@@ -80,7 +82,7 @@ function getData(data){
 
   let cl = document.createElement("button");
   cl.className="close1";
-  cl.textContent="Delete Project";
+  cl.textContent="Delete Item";
   cl.addEventListener("click", function(){
     if (confirm("Are you sure you want to delete the project")) {
       database.ref('Picasso').child(child).child(k).remove();
@@ -96,20 +98,20 @@ function getData(data){
   let Para = document.createElement('div');
   Para.className="P1"
   //appending to html
-  let seeMore = document.createElement("button");
-  seeMore.className="seeMore";
-  seeMore.innerHTML="see more";
-  seeMore.onclick=function(){
-    location.href = 'info.html'
-    localStorage.setItem("value",k);
-    console.log(k);
-  };
+  // let seeMore = document.createElement("button");
+  // seeMore.className="seeMore";
+  // seeMore.innerHTML="see more";
+  // seeMore.onclick=function(){
+  //   location.href = 'info.html'
+  //   localStorage.setItem("value",k);
+  //   console.log(k);
+  // };
   
   
   Para.appendChild(li);
   newDiv.appendChild(Para);
   newDiv.appendChild(cl);
-  newDiv.appendChild(seeMore);
+  //newDiv.appendChild(seeMore);
   // newDiv.appendChild(dropDownDiv);
   //toAddBox.appendChild(newDiv);
   document.getElementById('body').appendChild(newDiv);
@@ -119,13 +121,13 @@ function getData(data){
 
 
   //Drop down menu to see all the current Projects
-  let dropDown = document.createElement("a");
-  dropDown.className="dropDown";
-  var value = document.createTextNode(ProjectName);
-  dropDown.href="info.html";
-  dropDown.append(value);
-  const element = document.getElementById("dropdown-content");
-  element.appendChild(dropDown);
+  // let dropDown = document.createElement("a");
+  // dropDown.className="dropDown";
+  // var value = document.createTextNode(ProjectName);
+  // dropDown.href="info.html";
+  // dropDown.append(value);
+  // const element = document.getElementById("dropdown-content");
+  // element.appendChild(dropDown);
 
   }
   
@@ -144,20 +146,12 @@ function submitForm(e){
   
   //getting all the data from the form
   let data = {
-    ProjectName:getElementVal("ProjectName"),
-    ContractorName:getElementVal("ContractorName"),
-    ContractorPN:getElementVal("ContractorPN"),
-    ProjectManager:getElementVal("ProjectManager"),
-    ProjectManagerPN:getElementVal("ProjectManagerPN"),
-    PaintStoreManagerName:getElementVal("PaintStoreManagerName"),
-    PaintStoreManagerPN:getElementVal("PaintStoreManagerPN"),
-    leadPinterName:getElementVal("leadPinterName"),
-    leadPinterPN:getElementVal("leadPinterPN"),
-    paintStoreName:getElementVal("paintStoreName"),
-    paintStoreAddress:getElementVal("paintStoreAddress"),
-    paintStorePN:getElementVal("paintStorePN"),
-    projectAddress:getElementVal("projectAddress")
-  }
+    ItemCategory:getElementVal("ItemCategory"),
+    ItemName:getElementVal("ItemName"),
+    ItemPrice:getElementVal("ItemPrice"),
+    ItemNumber:getElementVal("ItemNumber"),
+    AileNumber:getElementVal("AileNumber")
+  };
   let formDB = database.ref("Picasso").child(child);
   //pushing the data to the databases
   formDB.push(data);

@@ -1,6 +1,6 @@
 /* Body of the page with a background picture */
 body {
-  background-color: rgb(229, 239, 243);
+  background-color: rgb(230, 230, 230);
   /* background-image: url("wall-paint.jpg"); */
   height: 500px; /* You must set a specified height */
   background-position: center; /* Center the image */
@@ -167,13 +167,16 @@ body {
 /* Box with info just to see how it looks */
 .Box1 {
   border-radius: 10px;
-  width: 350px;
-  height: 50px;
+  width: 75px;
+  height: 2%;
   padding: 100px;
-  border: 5px solid rgb(160, 158, 158);
+  /* border: 1px solid rgb(121, 122, 122); */
   position: relative;
-  background-color: rgb(167, 164, 161);
+  background-color: rgb(126, 207, 228);
   overflow: hidden;
+  float: left;
+  margin: 40px;
+  box-shadow: -1px 1px 20px rgb(193, 193, 194);
 }
 
 .Box2 {
@@ -200,10 +203,11 @@ body {
 
 /* Position of the box */
 .P1 {
+  width: 75px;
   font-size: 15px;
   font-family: Arial, Helvetica, sans-serif;
   position: relative;
-  color: white;
+  /* background-color: white; */
   right: 20%;
   top: -100px;
 }
@@ -323,8 +327,8 @@ button:hover {
 .close1 {
   cursor: pointer;
   position: absolute;
-  top: 80%;
-  left: 0%;
+  top: 90%;
+  left: 75px;
   background-color: rgb(126, 123, 121);
   transform: translate(0%, -50%);
 }
@@ -356,13 +360,17 @@ td {
 
 .list {
   position: relative;
-  right: 20%;
+  right: 100%;
 }
 
 .projectTable {
-  width: 150%;
+  position: relative;
+  width: 275px;
   border-radius: 10px;
+  background-color: white;
   color: rgb(0, 0, 0);
+  right: 50px;
+  top: -15px;
 }
 
 .seeMore {
@@ -373,4 +381,50 @@ td {
 }
 .seeMore:hover {
   background-color: rgb(71, 67, 67);
+}
+
+.search_div {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  top: 10px;
+}
+.search_class {
+  float: center;
+  background-color: #4654e1;
+  width: 300px;
+  height: 44px;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.search_input {
+  all: unset;
+  font: 16px system-ui;
+  color: #fff;
+  height: 100%;
+  width: 100%;
+  padding: 6px 10px;
+}
+
+::placeholder {
+  color: #fff;
+  opacity: 0.7;
+}
+
+svg {
+  color: #fff;
+  fill: currentColor;
+  width: 24px;
+  height: 24px;
+  padding: 10px;
+}
+
+.search_btn {
+  all: unset;
+  cursor: pointer;
+  width: 44px;
+  height: 44px;
 }

@@ -28,13 +28,10 @@ function getData(data){
   //data.preventDefault();
   //let l = document.querySelectorAll(".list");
   let b = document.querySelectorAll(".Box1");
-  let dropList = document.querySelectorAll(".dropDown");
 
   for(var j=0; j<b.length; j++ ){
     //l[i].remove();
     b[j].remove();
-    //window.location.reload();
-    dropList[j].remove();
   }
 
   let ItemCategory;
@@ -64,7 +61,7 @@ function getData(data){
     li.innerHTML='<table class="projectTable">' +
                 '<tr>'+'<th>'+"Item Category: "+'</th>'+'<th>'+ ItemCategory +'</th>'+'</tr>'+
                 '<tr>'+'<th>'+"Item Name: " +'</th>'+'<th>'+ItemName+'</th>' + '</tr>'+
-                '<tr>'+'<th>'+"Item Price: "+ '</th>'+'<th>' +ItemPrice+'</th>' + '</tr>'+
+                '<tr>'+'<th>'+"Item Price: "+ '</th>'+'<th>' +'$'+ItemPrice+'</th>' + '</tr>'+
                 '<tr>'+'<th>'+"Item Number: "+ '</th>'+'<th>' + ItemNumber+'</th>' + '</tr>'+
                 '<tr>'+'<th>'+"Aile Number: "+ '</th>'+'<th>' + AileNumber+'</th>' + '</tr>'+
                 '</table>';
@@ -77,6 +74,9 @@ function getData(data){
   let newDiv = document.createElement('div');
   newDiv.id = "Box";
   newDiv.className = 'Box1';
+
+  let colorDiv = document.createElement('div');
+  colorDiv.className = 'colorDiv';
 
   
 
@@ -111,15 +111,14 @@ function getData(data){
   Para.appendChild(li);
   newDiv.appendChild(Para);
   newDiv.appendChild(cl);
+
   //newDiv.appendChild(seeMore);
   // newDiv.appendChild(dropDownDiv);
   //toAddBox.appendChild(newDiv);
-  document.getElementById('body').appendChild(newDiv);
-  let p = document.createElement('p');
-  p.innerHTML="</br>";
-  document.getElementById('body').appendChild(p);
-
-
+  if(ItemCategory==="Outside Cooler"){
+    document.getElementById('body').appendChild(newDiv);
+  }
+  
   //Drop down menu to see all the current Projects
   // let dropDown = document.createElement("a");
   // dropDown.className="dropDown";
@@ -152,7 +151,7 @@ function submitForm(e){
     ItemNumber:getElementVal("ItemNumber"),
     AileNumber:getElementVal("AileNumber")
   };
-  let formDB = database.ref("Picasso").child(child);
+  let formDB = database.ref("Picasso/"+child);
   //pushing the data to the databases
   formDB.push(data);
 
@@ -264,4 +263,5 @@ function out(){
   //window.alert("sdfsdfgefgsfsg");
   //location.href = 'login.html'
 }
+
 

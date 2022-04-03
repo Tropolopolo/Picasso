@@ -204,3 +204,9 @@ input[type="password"] {
   position: absolute;
   top: 125px;
 }
+
+.passMIN{
+  font-family: "Nunito", sans-serif;
+  font-size: 12px;
+  opacity: 0.6;
+}

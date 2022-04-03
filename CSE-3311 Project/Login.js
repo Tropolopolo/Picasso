@@ -60,7 +60,7 @@ function logout(){
   //location.href = 'login.html'
 }
 
-localStorage.setItem('val',lo);
+//localStorage.setItem('val',lo);
 
 function createNewUser(){
   document.getElementById("signup_div").style.display="block";
@@ -77,7 +77,6 @@ function signup(){
     // Signed in 
     var user = userCredential.user;
     window.alert("user");
-
     // ...
   })
   .catch((error) => {
@@ -86,7 +85,6 @@ function signup(){
     window.alert('Error:'+errorMessage);
     // ..
   });
-
 }
 
 

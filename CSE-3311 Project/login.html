@@ -6,53 +6,53 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="style-form.css" />
 
-    <script
-      src="https://code.jquery.com/jquery-3.6.0.min.js"
-      integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
-      crossorigin="anonymous"
-    ></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/7.14.1-0/firebase.js"></script>
-    <script src="/CSE-3311 Project/Login.js"></script>
 
     <title>User Select</title>
   </head>
-  <body background-color="#04aa6d">
-    <div id="index">
-      <a href="index.html">Go To Index</a>
+  <body>
+    <div class = 'heading'><h1>Picasso</h1></div>
+    <!-- <div class = 'para'> <h3>Easy inventory management</h3></div> -->
+    <div class="containerdiv">
+      <div class="main" id="login_div">        
+        <input type="email" placeholder="Email" id="email_id" />
+        <input type="password" placeholder="Password" id="password_id" />
+        <button onclick="login()">Login</button>
+        <br />
+      </div>
+      <button class="signup" id="signup_id" onclick="createNewUser()" style="display:none;">
+        Create new account
+      </button>
+
     </div>
-    <div class="popForm">
-      <form id="Form" class="conForm">
-        <h1>Login</h1>
-        <label for="username" class="myLabel"><b>Username</b></label>
-        <input
-          type="text"
-          placeholder="Enter Username"
-          name="username"
-          required
-          class="myInput"
-          id="username"
-        />
-        <label for="email" class="myLabel"><b>Email</b></label>
-        <input
-          type="text"
-          placeholder="Enter Email"
-          name="email"
-          class="myInput"
-          id="email"
-        />
-        <label for="psw" class="myLabel"><b>Password</b></label>
-        <input
-          type="text"
-          placeholder="Enter Password"
-          name="psw"
-          required
-          class="myInput"
-          id="pass"
-        />
-        <label for="button" class="myLabel"></label>
-        <button onclick="login()" class="CU-btn">Login</button>
-        <button onclick="createUser()" class="CU-btn">Create User</button>
-      </form>
+
+    <div id="myModal" class="modal">
+      <!-- Modal content -->
+      <div class="modal-content">
+        <!-- The close button -->
+        <button class="close" onclick="closefn()">X</button>
+        <div class="Form">
+          <h1>Sign Up Form</h1>
+        </div>
+        <!-- Form -->
+        <div class="container">
+          <form action="" id="Form">
+              <input type="text" placeholder="First Name" id="fname" />
+              <input type="text" placeholder="Last Name" id="lanme" />
+              <input type="email" placeholder="Email" id="email" />
+              <input type="password" placeholder="Password" id="password" />
+              <button class="signup" onclick="signup()">Sign Up</button>
+
+            <!-- <input type="submit" value="Submit"></input> -->
+          </form>
+        </div>
+      </div>
     </div>
+  </div>
+    <div class="loggedin" id="user_div">
+      
+      <button onclick="logout()">Logout</button>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/7.14.1-0/firebase.js"></script>
+    <script src="Login.js"></script>
   </body>
 </html>

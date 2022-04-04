@@ -1,4 +1,3 @@
-//Youtube video used = https://www.youtube.com/watch?v=RAWHXRTKTHw
 //*************************************************Firebase configuration********************************************************//
 const firebaseConfig = {
   apiKey: "AIzaSyBganeN22quF9d0vAqJeAgYr9BCQyioKeg",
@@ -16,12 +15,12 @@ firebase.initializeApp(firebaseConfig);
 //referencing a database named "Picasso"
 //if it does not exists, it is created
 let database = firebase.database();
-
+let child = localStorage.getItem("uid");
 
 //listening to when the submit button is pressed in the form
 document.getElementById("Form").addEventListener("submit",submitForm);
 
-database.ref("Picasso/").on("value",getData,errData);
+database.ref("Picasso").child(child).on("value",getData,errData);
 
 //*************************************************Get Data Function*************************************************************//
 //To get data
@@ -29,19 +28,17 @@ function getData(data){
   //data.preventDefault();
   //let l = document.querySelectorAll(".list");
   let b = document.querySelectorAll(".Box1");
-  let dropList = document.querySelectorAll(".dropDown");
 
   for(var j=0; j<b.length; j++ ){
     //l[i].remove();
     b[j].remove();
-    //window.location.reload();
-    dropList[j].remove();
   }
 
-  let ProjectName;
-  let ContractorName;
-  let ProjectManager;
-  let projectAddress;
+  let ItemCategory;
+  let ItemName;
+  let ItemPrice;
+  let ItemNumber;
+  let AileNumber;
   //console.log(data.val());
   let objectData = data.val();
   let keys = Object.keys(objectData);
@@ -51,20 +48,22 @@ function getData(data){
   {
 
     let k = keys[i];
-    ProjectName           =objectData[k].ProjectName;
-    ContractorName        =objectData[k].ContractorName;
-    ProjectManager        =objectData[k].ProjectManager;
-    projectAddress        =objectData[k].projectAddress;
+    ItemCategory  =objectData[k].ItemCategory;
+    ItemName      =objectData[k].ItemName;
+    ItemPrice     =objectData[k].ItemPrice;
+    ItemNumber    =objectData[k].ItemNumber;
+    AileNumber    =objectData[k].AileNumber;
 
     //Creating a list to put the data in
     let li = document.createElement("ul");
     li.className="list";
     li.id="list";
     li.innerHTML='<table class="projectTable">' +
-                '<tr>'+'<th>'+"Project Name: "+'</th>'+'<th>'+ ProjectName +'</th>'+'</tr>'+
-                '<tr>'+'<th>'+"Contractor Name: " +'</th>'+'<th>'+ContractorName+'</th>' + '</tr>'+
-                '<tr>'+'<th>'+"Project Manager: "+ '</th>'+'<th>' +ProjectManager+'</th>' + '</tr>'+
-                '<tr>'+'<th>'+"project Address: "+ '</th>'+'<th>' + projectAddress+'</th>' + '</tr>'
+                '<tr>'+'<th>'+"Item Category: "+'</th>'+'<th>'+ ItemCategory +'</th>'+'</tr>'+
+                '<tr>'+'<th>'+"Item Name: " +'</th>'+'<th>'+ItemName+'</th>' + '</tr>'+
+                '<tr>'+'<th>'+"Item Price: "+ '</th>'+'<th>' +'$'+ItemPrice+'</th>' + '</tr>'+
+                '<tr>'+'<th>'+"Item Number: "+ '</th>'+'<th>' + ItemNumber+'</th>' + '</tr>'+
+                '<tr>'+'<th>'+"Aile Number: "+ '</th>'+'<th>' + AileNumber+'</th>' + '</tr>'+
                 '</table>';
 
   //Creating a box
@@ -76,52 +75,62 @@ function getData(data){
   newDiv.id = "Box";
   newDiv.className = 'Box1';
 
+  let colorDiv = document.createElement('div');
+  colorDiv.className = 'colorDiv';
+
   
 
   let cl = document.createElement("button");
   cl.className="close1";
-  cl.textContent="Delete Project";
+  cl.textContent="Delete Item";
   cl.addEventListener("click", function(){
     if (confirm("Are you sure you want to delete the project")) {
-      database.ref('Picasso/'+ k).remove();
-    } else {
+      database.ref('Picasso').child(child).child(k).remove();
     }
-    
-    
-    //window.location.reload();
   });
 
   
   //creating a div to put the retrived data in
   let Para = document.createElement('div');
-  Para.className="P1"
+  Para.className="P1";
   //appending to html
-  let seeMore = document.createElement("button");
-  seeMore.className="seeMore";
-  seeMore.innerHTML="<a href='info.html' style='text-decoration:none;' alt='Broken Link' target='_blank'>see More</a>";
-  seeMore.onclick=function(){
-    localStorage.setItem("value",k);
-    console.log(k);
-  };
+  // let seeMore = document.createElement("button");
+  // seeMore.className="seeMore";
+  // seeMore.innerHTML="see more";
+  // seeMore.onclick=function(){
+  //   location.href = 'info.html'
+  //   localStorage.setItem("value",k);
+  //   console.log(k);
+  // };
   
   
   Para.appendChild(li);
   newDiv.appendChild(Para);
   newDiv.appendChild(cl);
-  newDiv.appendChild(seeMore);
+
+  //newDiv.appendChild(seeMore);
   // newDiv.appendChild(dropDownDiv);
   //toAddBox.appendChild(newDiv);
-  document.getElementById('body').appendChild(newDiv);
+  let show = document.getElementById("search_btn");
+  
+  show.addEventListener("click",function(){
+
+    let x= document.getElementById("search_inp").value;
+    localStorage.setItem("x",x);
+
+  });
+  let b=localStorage.getItem("x");
 
 
-  //Drop down menu to see all the current Projects
-  let dropDown = document.createElement("a");
-  dropDown.className="dropDown";
-  var value = document.createTextNode(ProjectName);
-  dropDown.href="#";
-  dropDown.append(value);
-  const element = document.getElementById("dropdown-content");
-  element.appendChild(dropDown);
+  if(ItemCategory===b){
+    document.getElementById('body').appendChild(newDiv);
+  }
+  if(ItemName===b){
+    document.getElementById('body').appendChild(newDiv);
+  }
+  if(AileNumber===b){
+    document.getElementById('body').appendChild(newDiv);
+  }
 
   }
   
@@ -140,21 +149,13 @@ function submitForm(e){
   
   //getting all the data from the form
   let data = {
-    ProjectName:getElementVal("ProjectName"),
-    ContractorName:getElementVal("ContractorName"),
-    ContractorPN:getElementVal("ContractorPN"),
-    ProjectManager:getElementVal("ProjectManager"),
-    ProjectManagerPN:getElementVal("ProjectManagerPN"),
-    PaintStoreManagerName:getElementVal("PaintStoreManagerName"),
-    PaintStoreManagerPN:getElementVal("PaintStoreManagerPN"),
-    leadPinterName:getElementVal("leadPinterName"),
-    leadPinterPN:getElementVal("leadPinterPN"),
-    paintStoreName:getElementVal("paintStoreName"),
-    paintStoreAddress:getElementVal("paintStoreAddress"),
-    paintStorePN:getElementVal("paintStorePN"),
-    projectAddress:getElementVal("projectAddress")
-  }
-  let formDB = database.ref("Picasso/");
+    ItemCategory:getElementVal("ItemCategory"),
+    ItemName:getElementVal("ItemName"),
+    ItemPrice:getElementVal("ItemPrice"),
+    ItemNumber:getElementVal("ItemNumber"),
+    AileNumber:getElementVal("AileNumber")
+  };
+  let formDB = database.ref("Picasso/"+child);
   //pushing the data to the databases
   formDB.push(data);
 
@@ -179,81 +180,18 @@ function showAlert(){
 //it is used in the "data" object above
 const getElementVal = (id)=>{
   return document.getElementById(id).value;
+};
+
+
+//function to logout the user
+function out(){
+  firebase.auth().signOut().then(() => {
+    location.href = 'login.html';
+
+  }).catch((error) => {
+    window.alert(error);
+
+  });
 }
-
-
-var currentTab = 0; // Current tab is set to be the first tab (0)
-showTab(currentTab); // Display the current tab
-
-function showTab(n) {
-  // This function will display the specified tab of the form ...
-  var x = document.getElementsByClassName("tab");
-  x[n].style.display = "block";
-  // ... and fix the Previous/Next buttons:
-  if (n == 0) {
-    document.getElementById("prevBtn").style.display = "none";
-  } else {
-    document.getElementById("prevBtn").style.display = "inline";
-  }
-  if (n == (x.length - 1)) {
-    document.getElementById("nextBtn").innerHTML = "Submit";
-  } else {
-    document.getElementById("nextBtn").innerHTML = "Next";
-  }
-  // ... and run a function that displays the correct step indicator:
-  fixStepIndicator(n)
-}
-
-function nextPrev(n) {
-  // This function will figure out which tab to display
-  var x = document.getElementsByClassName("tab");
-  // Exit the function if any field in the current tab is invalid:
-  if (n == 1 && !validateForm()) return false;
-  // Hide the current tab:
-  x[currentTab].style.display = "none";
-  // Increase or decrease the current tab by 1:
-  currentTab = currentTab + n;
-  // if you have reached the end of the form... :
-  if (currentTab >= x.length) {
-    //...the form gets submitted:
-    document.getElementById("regForm").submit();
-    return false;
-  }
-  // Otherwise, display the correct tab:
-  showTab(currentTab);
-}
-
-function validateForm() {
-  // This function deals with validation of the form fields
-  var x, y, i, valid = true;
-  x = document.getElementsByClassName("tab");
-  y = x[currentTab].getElementsByTagName("input");
-  // A loop that checks every input field in the current tab:
-  for (i = 0; i < y.length; i++) {
-    // If a field is empty...
-    if (y[i].value == "") {
-      // add an "invalid" class to the field:
-      y[i].className += " invalid";
-      // and set the current valid status to false:
-      valid = false;
-    }
-  }
-  // If the valid status is true, mark the step as finished and valid:
-  if (valid) {
-    document.getElementsByClassName("step")[currentTab].className += " finish";
-  }
-  return valid; // return the valid status
-}
-
-function fixStepIndicator(n) {
-  // This function removes the "active" class of all steps...
-  var i, x = document.getElementsByClassName("step");
-  for (i = 0; i < x.length; i++) {
-    x[i].className = x[i].className.replace(" active", "");
-  }
-  //... and adds the "active" class to the current step:
-  x[n].className += " active";
-}
-
 
 

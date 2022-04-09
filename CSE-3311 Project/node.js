@@ -24,4 +24,4 @@ window.onclick = function(event) {
   }
 }
 
-
+showtab(0);

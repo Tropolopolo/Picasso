@@ -121,6 +121,13 @@ function getData(data){
   });
   let b=localStorage.getItem("x");
 
+  console.log(b);
+
+  if(b==="")
+  {
+    document.getElementById('body').appendChild(newDiv);
+    continue;
+  }
 
   if(ItemCategory===b){
     document.getElementById('body').appendChild(newDiv);
@@ -131,6 +138,7 @@ function getData(data){
   if(AileNumber===b){
     document.getElementById('body').appendChild(newDiv);
   }
+
 
   }
   

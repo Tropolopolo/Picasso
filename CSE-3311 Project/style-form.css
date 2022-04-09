@@ -90,6 +90,8 @@ button {
   transition: 0.3s;
   -webkit-transition: 0.3s;
   -moz-transition: 0.3s;
+  position: relative;
+  left: -10%;
 }
 
 .signup:hover {
@@ -158,10 +160,10 @@ input[type="password"] {
 
 .container {
   position: relative;
-  width: 500px;
+  width: 400px;
   top: 20px;
   top: -15px;
-  left: -20px;
+  left: 15%;
   border-radius: 5px;
   background-color: #f2f2f2;
   padding: 20px;
@@ -194,7 +196,7 @@ input[type="password"] {
   font-size: 50px;
   position: absolute;
   top: -20px;
-  right: 575px;
+  right: 42.5%;
   font-family: Arial, sans-serif;
 }
 
@@ -209,4 +211,6 @@ input[type="password"] {
   font-family: "Nunito", sans-serif;
   font-size: 12px;
   opacity: 0.6;
+  left: -25%;
+  position: relative;
 }

@@ -42,7 +42,7 @@ function getData(data){
   //console.log(data.val());
   let objectData = data.val();
   let keys = Object.keys(objectData);
-  //console.log(keys);
+  console.log(keys.length);
 
   for(var i = 0; i < keys.length; i++)
   {
@@ -53,6 +53,8 @@ function getData(data){
     ItemPrice     =objectData[k].ItemPrice;
     ItemNumber    =objectData[k].ItemNumber;
     AileNumber    =objectData[k].AileNumber;
+
+    console.log("Aile: " + AileNumber + "\nItem Name: " + ItemName);
 
     //Creating a list to put the data in
     let li = document.createElement("ul");
@@ -115,10 +117,10 @@ function getData(data){
   //newDiv.appendChild(seeMore);
   // newDiv.appendChild(dropDownDiv);
   //toAddBox.appendChild(newDiv);
-  if(ItemCategory==="Outside Cooler"){
-    document.getElementById('body').appendChild(newDiv);
-  }
-  
+  //if(ItemCategory==="Outside Cooler"){
+  //  document.getElementById('body').appendChild(newDiv);
+  //}
+  document.getElementById('body').appendChild(newDiv);
   //Drop down menu to see all the current Projects
   // let dropDown = document.createElement("a");
   // dropDown.className="dropDown";
@@ -180,7 +182,7 @@ const getElementVal = (id)=>{
 
 
 var currentTab = 0; // Current tab is set to be the first tab (0)
-showTab(currentTab); // Display the current tab
+//showTab(currentTab); // Display the current tab
 
 function showTab(n) {
   // This function will display the specified tab of the form ...

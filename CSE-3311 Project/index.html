@@ -14,7 +14,7 @@
       <button class="active" style="font-size:20px">Picasso</button>
       <!-- Form in Modal -->
       <button class="AddProject" id="myBtn">
-        <span>&#43;</span> Add Items
+        <span>&#43;</span> Add Project(Modal)
       </button>
       <button class="logout" id="log_out" onclick="out()">
         Logout
@@ -26,7 +26,7 @@
           <!-- The close button -->
           <span class="close">&times;</span>
           <div class="Form">
-            <h1> Add Items</h1>
+            <h1>Project Form</h1>
           </div>
           <!-- Form -->
           <div class="container">
@@ -34,10 +34,12 @@
               <div class="alert">Form sent</div>
               <div class ="tab">
                 <label for="ItemCategory">Item Category &emsp;</label> <br>
-                <select name="ItemCategory" id="ItemCategory"> 
-                  <option>Inside Cooler</option>
-                  <option>Outside Cooler</option>
-                </select> <br>
+                <input
+                  type="text"
+                  id="ItemCategory"
+                  placeholder="Category of the Item"
+                />
+                <br />
                 <label for="ItemName">Item Name &emsp;&emsp;&ensp;&ensp;</label><br>
                 <input
                   type="text"
@@ -61,12 +63,11 @@
                 />
                 <br />
                 <label for="Aile">Aile Number</label><br>
-                <select name="Aile" id="AileNumber">
-                  <option>1</option>
-                  <option>2</option>
-                  <option>3</option>
-                  <option>4</option>
-                </select>
+                <input
+                  type="number"
+                  id="AileNumber"
+                  placeholder="Aile the item is stored"
+                />
                 <br />
               </div>
               <input type="submit" value="Submit" id="submitId"></input>
@@ -75,15 +76,8 @@
         </div>
       </div>
     </div>
-    <div class="search_div">
-      <form id="search" class="search_class"> 
-        <input type="search" class="search_input" id="search_inp" name="qq" placeholder="Search...">
-        <button class="search_btn" id="search_btn"><svg viewBox="0 0 1024 1024"><path class="path1" d="M848.471 928l-263.059-263.059c-48.941 36.706-110.118 55.059-177.412 55.059-171.294 0-312-140.706-312-312s140.706-312 312-312c171.294 0 312 140.706 312 312 0 67.294-24.471 128.471-55.059 177.412l263.059 263.059-79.529 79.529zM189.623 408.078c0 121.364 97.091 218.455 218.455 218.455s218.455-97.091 218.455-218.455c0-121.364-103.159-218.455-218.455-218.455-121.364 0-218.455 97.091-218.455 218.455z"></path></svg>
-        </button>
-      </form>
-    </div>
-
     <br><br>
+    </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/7.14.1-0/firebase.js"></script>
     <script src="server.js"></script>
     <script src="node.js"></script>

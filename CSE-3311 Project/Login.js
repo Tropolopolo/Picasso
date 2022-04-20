@@ -50,6 +50,7 @@ function login(){
 }
 
 function logout(){
+  localStorage.clear();
   firebase.auth().signOut().then(() => {
     //location.href = 'login.html'
 

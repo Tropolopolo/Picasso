@@ -68,6 +68,40 @@ body {
   background-color: rgb(70, 107, 161);
 }
 
+.AddStore {
+  position: relative;
+  left: 55%;
+  background-color: #5d8ffc;
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+}
+
+/* hover for addbutton */
+.AddStore:hover {
+  display: block;
+  background-color: rgb(70, 107, 161);
+}
+
+.AddNext {
+  position: relative;
+  right: 0%;
+  background-color: #5d8ffc;
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+}
+
+/* hover for addbutton */
+.AddNext:hover {
+  display: block;
+  background-color: rgb(70, 107, 161);
+}
+
 .logout {
   position: relative;
   left: 50%;

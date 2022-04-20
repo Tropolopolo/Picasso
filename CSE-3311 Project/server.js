@@ -19,8 +19,11 @@ let child = localStorage.getItem("uid");
 
 //listening to when the submit button is pressed in the form
 document.getElementById("Form").addEventListener("submit",submitForm);
+document.getElementById("Form2").addEventListener("submit",submitStore);
 
 database.ref("Picasso").child(child).on("value",getData,errData);
+localStorage.setItem('x', 0);
+
 
 //*************************************************Get Data Function*************************************************************//
 //To get data
@@ -34,104 +37,113 @@ function getData(data){
     b[j].remove();
   }
 
+  //Adding a store value
+  /*
+    Adding a store value allows for data to be contained in each store.
+    Adding this will make the children of the User into each store the User owns.
+    Therefore to get each item we must first choose a store who's data will be displayed.
+    This can be a data value associated with the User that we can allow the user to change.
+
+    What needs to be done:
+    Need to define a variable to hold the store keys.
+    Need to iterate over these keys to get the item data.
+      *Or maybe just lookup the current store that will be displayed.
+    Need a variable to define which store to show initially.
+    Need to change how we send data to the database to store new values.
+  */
+
+var DefaultStore;
+var StoreContainer;
+var datavalues;
+
+database.ref("Picasso").child(child).on('value', (snapshot) => {
+  StoreContainer = database.ref("Picasso").child(child); //Keys of each store
+  DefaultStore = snapshot.child("DefaultStore").val();
+  datavalues = snapshot.val();
+  //console.log(StoreContainer);
+}, (errorObject) => {
+  console.log('The read failed: ' + errorObject.name);
+});
+
   let ItemCategory;
   let ItemName;
   let ItemPrice;
   let ItemNumber;
   let AileNumber;
-  //console.log(data.val());
-  let objectData = data.val();
-  let keys = Object.keys(objectData);
-  console.log(keys.length);
-
-  for(var i = 0; i < keys.length; i++)
-  {
-
-    let k = keys[i];
-    ItemCategory  =objectData[k].ItemCategory;
-    ItemName      =objectData[k].ItemName;
-    ItemPrice     =objectData[k].ItemPrice;
-    ItemNumber    =objectData[k].ItemNumber;
-    AileNumber    =objectData[k].AileNumber;
-
-    console.log("Aile: " + AileNumber + "\nItem Name: " + ItemName);
-
-    //Creating a list to put the data in
-    let li = document.createElement("ul");
-    li.className="list";
-    li.id="list";
-    li.innerHTML='<table class="projectTable">' +
-                '<tr>'+'<th>'+"Item Category: "+'</th>'+'<th>'+ ItemCategory +'</th>'+'</tr>'+
-                '<tr>'+'<th>'+"Item Name: " +'</th>'+'<th>'+ItemName+'</th>' + '</tr>'+
-                '<tr>'+'<th>'+"Item Price: "+ '</th>'+'<th>' +'$'+ItemPrice+'</th>' + '</tr>'+
-                '<tr>'+'<th>'+"Item Number: "+ '</th>'+'<th>' + ItemNumber+'</th>' + '</tr>'+
-                '<tr>'+'<th>'+"Aile Number: "+ '</th>'+'<th>' + AileNumber+'</th>' + '</tr>'+
-                '</table>';
-
-  //Creating a box
-  //All this is just to put the data in a box in html, style is in css as Box1 and P1
-  //toAdd is a document fragment to put the box in
-  //var toAddBox = document.createDocumentFragment();
-  //creating a div so that we can give the box an id and class
-  let newDiv = document.createElement('div');
-  newDiv.id = "Box";
-  newDiv.className = 'Box1';
-
-  let colorDiv = document.createElement('div');
-  colorDiv.className = 'colorDiv';
-
   
+  let objectData = datavalues;
+  let Stores = Object.keys(objectData);
 
-  let cl = document.createElement("button");
-  cl.className="close1";
-  cl.textContent="Delete Item";
-  cl.addEventListener("click", function(){
-    if (confirm("Are you sure you want to delete the project")) {
-      database.ref('Picasso').child(child).child(k).remove();
-    } else {
-    }
-    
-    
-    //window.location.reload();
+  Stores.forEach(lstoreStore);
+
+  localStorage.setItem("StoreAmount",Stores.length-1);
+  localStorage.setItem("DefaultStore",DefaultStore);
+  //console.log("Stores " + Stores);
+
+  let StoreRef = StoreContainer.child(Stores[DefaultStore]);
+
+  StoreRef.on('value', (snapshot) => {
+    localStorage.setItem("StoreName", snapshot.child("StoreName").val());
+    localStorage.setItem("StoreNum", snapshot.child("StoreNum").val());
+
+    snapshot.forEach(function(childSnapshot) {
+      var childData = childSnapshot.val();
+      //console.log(childData);
+      if(typeof childData == 'object')
+      {
+        ItemCategory  = childData.ItemCategory;
+        ItemName      = childData.ItemName;
+        ItemPrice     = childData.ItemPrice;
+        ItemNumber    = childData.ItemNumber;
+        AileNumber    = childData.AileNumber;
+
+        //console.log("ItemCategory: " + ItemCategory);
+
+         //Creating a list to put the data in
+        let li = document.createElement("ul");
+        li.className="list";
+        li.id="list";
+        li.innerHTML='<table class="projectTable">' +
+                    '<tr>'+'<th>'+"Item Category: "+'</th>'+'<th>'+ ItemCategory +'</th>'+'</tr>'+
+                    '<tr>'+'<th>'+"Item Name: " +'</th>'+'<th>'+ItemName+'</th>' + '</tr>'+
+                    '<tr>'+'<th>'+"Item Price: "+ '</th>'+'<th>' +'$'+ItemPrice+'</th>' + '</tr>'+
+                    '<tr>'+'<th>'+"Item Number: "+ '</th>'+'<th>' + ItemNumber+'</th>' + '</tr>'+
+                    '<tr>'+'<th>'+"Aile Number: "+ '</th>'+'<th>' + AileNumber+'</th>' + '</tr>'+
+                    '</table>';
+        let newDiv = document.createElement('div');
+        newDiv.id = "Box";
+        newDiv.className = 'Box1';
+
+        let colorDiv = document.createElement('div');
+        colorDiv.className = 'colorDiv';
+
+        //This May have to change. Code: 1101
+        let cl = document.createElement("button");
+        cl.className="close1";
+        cl.textContent="Delete Item";
+        cl.addEventListener("click", function(){
+          if (confirm("Are you sure you want to delete the project")) {
+            database.ref('Picasso').child(child).child(k).remove();
+          }
+        });
+
+        //creating a div to put the retrived data in
+        let Para = document.createElement('div');
+        Para.className="P1"
+        
+        Para.appendChild(li);
+        newDiv.appendChild(Para);
+        newDiv.appendChild(cl);
+
+        document.getElementById('body').appendChild(newDiv);
+      }
+        //console.log(childData);
+     });
+
+    //console.log(snapshot.val());
+  }, (errorObject) => {
+    console.log('The read failed: ' + errorObject.name);
   });
-
-  
-  //creating a div to put the retrived data in
-  let Para = document.createElement('div');
-  Para.className="P1"
-  //appending to html
-  // let seeMore = document.createElement("button");
-  // seeMore.className="seeMore";
-  // seeMore.innerHTML="see more";
-  // seeMore.onclick=function(){
-  //   location.href = 'info.html'
-  //   localStorage.setItem("value",k);
-  //   console.log(k);
-  // };
-  
-  
-  Para.appendChild(li);
-  newDiv.appendChild(Para);
-  newDiv.appendChild(cl);
-
-  //newDiv.appendChild(seeMore);
-  // newDiv.appendChild(dropDownDiv);
-  //toAddBox.appendChild(newDiv);
-  //if(ItemCategory==="Outside Cooler"){
-  //  document.getElementById('body').appendChild(newDiv);
-  //}
-  document.getElementById('body').appendChild(newDiv);
-  //Drop down menu to see all the current Projects
-  // let dropDown = document.createElement("a");
-  // dropDown.className="dropDown";
-  // var value = document.createTextNode(ProjectName);
-  // dropDown.href="info.html";
-  // dropDown.append(value);
-  // const element = document.getElementById("dropdown-content");
-  // element.appendChild(dropDown);
-
-  }
-  
 }
 //To get data
 function errData(err){
@@ -139,11 +151,31 @@ function errData(err){
   console.log(err);
 }
 
+function lstoreStore(item, index)
+{
+  if(item == "DefaultStore" || item=="undefined")
+    return;
+  localStorage.setItem("Store" + index, item);
+}
+
 //***********************************************Function to submit form*********************************************************//
 //function to execute when the submit button is pressed
 // e is for event
 function submitForm(e){
   e.preventDefault();
+
+  //console.log(e);
+  //We need to save the current store they are looking at
+  //we need to update only the store they want to add a product to.
+
+  let StoreAmount = localStorage.getItem("StoreAmount");
+  let Stores = [];
+  for(var i=0; i<StoreAmount; i++)
+  {
+    Stores.push(localStorage.getItem("Store" + i));
+  }
+
+  let DefaultStore = localStorage.getItem("DefaultStore");
   
   //getting all the data from the form
   let data = {
@@ -153,9 +185,11 @@ function submitForm(e){
     ItemNumber:getElementVal("ItemNumber"),
     AileNumber:getElementVal("AileNumber")
   };
-  let formDB = database.ref("Picasso/"+child);
-  //pushing the data to the databases
-  formDB.push(data);
+
+  //console.log(Stores[DefaultStore]);
+  let formDB = database.ref("Picasso/" + child);
+  //pushing the data to the databases 
+  formDB.child(Stores[DefaultStore]).push(data);
 
   //showing an alert at the top to conform that the data has been sent
   showAlert();
@@ -164,6 +198,39 @@ function submitForm(e){
   document.getElementById("Form").reset();
   window.location.reload();
   
+}
+
+//Add new submittion function for a new store
+function submitStore(s){
+
+  let StoreAmount = localStorage.getItem("StoreAmount");
+  let Stores = [];
+  for(var i=0; i<StoreAmount-1; i++)
+  {
+    Stores.push(localStorage.getItem("Store" + i));
+  }
+
+  //console.log(Stores);
+
+  //let DefaultStore = localStorage.getItem("DefaultStore");
+
+  let data = {
+    StoreNum:getElementVal("StoreNum"),
+    StoreName:getElementVal("StoreName"),
+  };
+
+  //console.log(data);
+  let formDB = database.ref("Picasso/" + child);
+  //formDB.update({'DefaultStore': 0});
+  //pushing the data to the databases 
+  formDB.push(data);
+
+  //showing an alert at the top to conform that the data has been sent
+  showAlert();
+
+  //resetting the form
+  document.getElementById("Form").reset();
+  window.location.reload();
 }
 
 //*******************************************Function to show sent alert*********************************************************//
@@ -256,6 +323,7 @@ function fixStepIndicator(n) {
 
 
 function out(){
+  localStorage.clear();
   firebase.auth().signOut().then(() => {
     location.href = 'login.html'
 
@@ -266,4 +334,7 @@ function out(){
   //location.href = 'login.html'
 }
 
-
+function nextStore(n){
+  let formDB = database.ref("Picasso/" + child);
+  formDB.update({'DefaultStore': n});
+}

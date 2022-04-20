@@ -10,7 +10,7 @@
   <body id="body">
     <!-- The top navigation bar -->
     <div class="topnav">
-      <!-- Project name = Picasso -->
+      <!-- poject name = Picasso -->
       <button class="active" style="font-size:20px">Picasso</button>
       <!-- Form in Modal -->
       <button class="AddProject" id="myBtn">
@@ -18,6 +18,15 @@
       </button>
       <button class="logout" id="log_out" onclick="out()">
         Logout
+      </button>
+      <button class="AddStore" id="myBtn2">
+        <span>&#43;</span> Add Store
+      </button>
+      <button class="AddNext" id="myBtn3">
+        <span></span> Previous Store
+      </button>
+      <button class="AddNext" id="myBtn4">
+        <span></span> Next Store
       </button>
       <!-- The Modal -->
       <div id="myModal" class="modal">
@@ -65,10 +74,45 @@
                 <select name="Aile" id="AileNumber">
                   <option>1</option>
                   <option>2</option>
-                  <option>3</option>
+                  <option>3</op
+                    tion>
                   <option>4</option>
                 </select>
                 <br />
+              </div>
+              <input type="submit" value="Submit" id="submitId"></input>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <div id="myModal2" class="modal">
+        <!-- Modal content -->
+        <div class="modal-content">
+          <!-- The close button -->
+          <span class="close">&times;</span>
+          <div class="Form">
+            <h1>Store Form</h1>
+          </div>
+          <!-- Form -->
+          <div class="container">
+            <form action="" id="Form2">
+              <div class="alert">Form sent</div>
+              <div class ="tab">
+                <label for="StoreName">Store Name &emsp;</label> <br>
+                <input
+                  type="text"
+                  id="StoreName"
+                  placeholder="Name of the Store"
+                /><br>
+
+                <label for="StoreNum">Store Number &emsp;</label> <br>
+                <input
+                  type="number"
+                  id="StoreNum"
+                  placeholder="Store Number"
+                /><br>
+
               </div>
               <input type="submit" value="Submit" id="submitId"></input>
             </form>

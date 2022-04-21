@@ -147,7 +147,11 @@ database.ref("Picasso").child(child).on('value', (snapshot) => {
   });
 
   let storeTitle = document.getElementById("StoreTitle");
-  storeTitle.innerHTML = localStorage.getItem("StoreName");
+  let str = localStorage.getItem("StoreName");
+  if(str == null){
+    storeTitle.innerHTML = "Store: "; 
+  }else
+    storeTitle.innerHTML = "Store: " + str;
 }
 //To get data
 function errData(err){
@@ -219,7 +223,7 @@ function submitStore(s){
   //let DefaultStore = localStorage.getItem("DefaultStore");
 
   let data = {
-    StoreNum:getElementVal("StoreNum"),
+    StoreNum:parseInt(localStorage.getItem("StoreAmount")) + 1,
     StoreName:getElementVal("StoreName"),
   };
 

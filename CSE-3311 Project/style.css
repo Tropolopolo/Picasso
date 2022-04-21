@@ -462,3 +462,15 @@ svg {
   width: 44px;
   height: 44px;
 }
+
+.StoreTitle{
+  position: relative;
+  left: 2%;
+  font-size: xx-large;
+  font: 32px system-ui;
+  color: #fefefe;
+  width:fit-content;
+  outline: auto;
+  outline-color: #5d8ffc;
+  background-color: #5d8ffc;
+}

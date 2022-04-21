@@ -78,6 +78,7 @@ database.ref("Picasso").child(child).on('value', (snapshot) => {
 
   localStorage.setItem("StoreAmount",Stores.length-1);
   localStorage.setItem("DefaultStore",DefaultStore);
+  //localStorage.setItem("StoreName", StoreContainer.child(Stores[DefaultStore]).child("StoreName"));
   //console.log("Stores " + Stores);
 
   let StoreRef = StoreContainer.child(Stores[DefaultStore]);
@@ -144,6 +145,9 @@ database.ref("Picasso").child(child).on('value', (snapshot) => {
   }, (errorObject) => {
     console.log('The read failed: ' + errorObject.name);
   });
+
+  let storeTitle = document.getElementById("StoreTitle");
+  storeTitle.innerHTML = localStorage.getItem("StoreName");
 }
 //To get data
 function errData(err){

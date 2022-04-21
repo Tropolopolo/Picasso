@@ -172,6 +172,12 @@ function lstoreStore(item, index)
 function submitForm(e){
   e.preventDefault();
 
+  let check = localStorage.getItem("StoreAmount");
+  if(check == 0 || check == null){
+    window.alert("Create a Store first!");
+    return;
+  }
+
   //console.log(e);
   //We need to save the current store they are looking at
   //we need to update only the store they want to add a product to.

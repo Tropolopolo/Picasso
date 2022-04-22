@@ -5,3 +5,8 @@
     Allow the user to delete a store.
     Be sure to give them a final warning when deleting a store.
 
+3. Accounts Setup
+
+This account should work the best:
+burn@gmail.com
+lollol

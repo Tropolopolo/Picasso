@@ -63,8 +63,10 @@ window.onclick = function(event) {
 }
 
 
-var currentTab = 1; // Current tab is set to be the first tab (0)
+var currentTab = 0;
+var currentTab1 = 1;// Current tab is set to be the first tab (0)
 showTab(currentTab); // Display the current tab
+showTab(currentTab1);
 
 function showTab(n) {
   // This function will display the specified tab of the form ...
@@ -92,7 +94,9 @@ function showTab(n) {
   }
   if (n == (x.length-1)) {
     document.getElementById("submitId").style.display = "inline";
-    document.getElementById("nextBtn").style.display = "none";
+    //document.getElementById("nextBtn").style.display = "none";
+    document.getElementById("prevBtn").style.display = "inline";
+    document.getElementById("nextBtn").style.display = "inline";
   } else {
     document.getElementById("nextBtn").style.display = "inline";
   }

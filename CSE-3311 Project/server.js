@@ -27,7 +27,7 @@ localStorage.setItem('x', 0);
 
 //*************************************************Get Data Function*************************************************************//
 //To get data
-function getData(data){
+function getData(){
   //data.preventDefault();
   //let l = document.querySelectorAll(".list");
   let b = document.querySelectorAll(".Box1");
@@ -97,6 +97,20 @@ database.ref("Picasso").child(child).on('value', (snapshot) => {
         ItemPrice     = childData.ItemPrice;
         ItemNumber    = childData.ItemNumber;
         AileNumber    = childData.AileNumber;
+
+        let filter = localStorage.getItem("filter");
+        if(filter!=null && filter!=""){
+
+          //console.log(parseInt(filter));
+
+          if(ItemCategory == filter);
+          else if(ItemName == filter);
+          else if(ItemNumber == filter);
+          else if(ItemPrice == filter);
+          else if(AileNumber == filter);
+          else
+            return;
+        }
 
         //console.log("ItemCategory: " + ItemCategory);
 
@@ -351,4 +365,12 @@ function out(){
 function nextStore(n){
   let formDB = database.ref("Picasso/" + child);
   formDB.update({'DefaultStore': n});
+  localStorage.setItem("filter", "");
+  getData();
+}
+
+function search(){
+  //window.alert("This is the search function");
+  let searchCriteria = document.getElementById("search_inp");
+  localStorage.setItem("filter", searchCriteria.value);
 }

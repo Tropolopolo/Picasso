@@ -8,6 +8,7 @@ var btn = document.getElementById("myBtn");
 var btn2 = document.getElementById("myBtn2");
 var btn3 = document.getElementById("myBtn3");
 var btn4 = document.getElementById("myBtn4");
+var btn5 = document.getElementById("myBtn5");
 
 // Get the <span> element that closes the modal
 var span = document.getElementsByClassName("close");
@@ -15,11 +16,11 @@ var span = document.getElementsByClassName("close");
 // When the user clicks the button, open the modal 
 btn.onclick = function(){
   modal.style.display = "block";
-}
+};
 
 btn2.onclick = function(){
   modal2.style.display = "block";
-}
+};
 
 btn3.onclick = function(){
   let y = localStorage.getItem('x');
@@ -30,7 +31,7 @@ btn3.onclick = function(){
     x++;
   nextStore(x);
   localStorage.setItem('x', x);
-}
+};
 
 btn4.onclick = function(){
   let y = localStorage.getItem('x');
@@ -41,16 +42,25 @@ btn4.onclick = function(){
     x--;
   nextStore(x);
   localStorage.setItem('x', x);
-}
+};
+
+btn5.onclick = function(){
+  var check = window.confirm("Are you sure you want to delete this store?");
+  if(check)
+  {
+    let store = localStorage.getItem("Store"+localStorage.getItem("DefaultStore"));
+    delStore(store);
+  }
+};
 
 // When the user clicks on <span> (x), close the modal
 span[0].onclick = function() {
   modal.style.display = "none";
-}
+};
 
 span[1].onclick = function(){
   modal2.style.display = "none";
-}
+};
 
 // When the user clicks anywhere outside of the modal, close it
 window.onclick = function(event) {
@@ -60,7 +70,7 @@ window.onclick = function(event) {
   if(event.target == modal2){
     modal2.style.display = "none";
   }
-}
+};
 
 
 var currentTab = 0;

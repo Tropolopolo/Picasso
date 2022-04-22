@@ -374,3 +374,9 @@ function search(){
   let searchCriteria = document.getElementById("search_inp");
   localStorage.setItem("filter", searchCriteria.value);
 }
+
+function delStore(s){
+  database.ref("Picasso").child(child).child(s).remove().then(function(){
+    window.reload();
+  });
+}

@@ -109,13 +109,14 @@ window.onclick = function(event) {
 
 var currentTab = 0;
 var currentTab1 = 1;// Current tab is set to be the first tab (0)
-showTab(currentTab); // Display the current tab
-showTab(currentTab1);
+showTab(1); // Display the current tab
+showTab(0);
 
 function showTab(n) {
   // This function will display the specified tab of the form ...
   var x = document.getElementsByClassName("tab");
   x[n].style.display = "block";
+  x[n-1].style.display = "block";
   // ... and fix the Previous/Next buttons:
   // if (n == 0) {
   //   document.getElementById("prevBtn").style.display = "none";

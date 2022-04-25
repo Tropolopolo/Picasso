@@ -11,7 +11,6 @@ const firebaseConfig = {
 };
 //reference your database
 firebase.initializeApp(firebaseConfig);
-// let id = localStorage.getItem("uid");
 //referencing a database named "Picasso"
 //if it does not exists, it is created
 let database = firebase.database();
@@ -60,7 +59,6 @@ database.ref("Picasso").child(child).on('value', (snapshot) => {
   StoreContainer = database.ref("Picasso").child(child); //Keys of each store
   DefaultStore = snapshot.child("DefaultStore").val();
   datavalues = snapshot.val();
-  //console.log(StoreContainer);
 }, (errorObject) => {
   console.log('The read failed: ' + errorObject.name);
 });
@@ -79,7 +77,6 @@ database.ref("Picasso").child(child).on('value', (snapshot) => {
   localStorage.setItem("StoreAmount",Stores.length-1);
   localStorage.setItem("DefaultStore",DefaultStore);
   //localStorage.setItem("StoreName", StoreContainer.child(Stores[DefaultStore]).child("StoreName"));
-  //console.log("Stores " + Stores);
 
   let StoreRef = StoreContainer.child(Stores[DefaultStore]);
 
@@ -91,7 +88,6 @@ database.ref("Picasso").child(child).on('value', (snapshot) => {
 
     snapshot.forEach(function(childSnapshot) {
       var childData = childSnapshot.val();
-      //console.log(childData);
       if(typeof childData == 'object')
       {
         ItemCategory  = childData.ItemCategory;
@@ -102,8 +98,6 @@ database.ref("Picasso").child(child).on('value', (snapshot) => {
 
         let filter = localStorage.getItem("filter");
         if(filter!=null && filter!=""){
-
-          //console.log(parseInt(filter));
 
           if(ItemCategory == filter);
           else if(ItemName == filter);
@@ -122,14 +116,10 @@ database.ref("Picasso").child(child).on('value', (snapshot) => {
           AileNumber
         ];
         
-        //console.log(rdata);
         items.push(rdata);
-        //document.getElementById('body').appendChild(newDiv);
       }
-        //console.log(childData);
      });
 
-    //console.log(snapshot.val());
   }, (errorObject) => {
     console.log('The read failed: ' + errorObject.name);
   });
@@ -145,6 +135,7 @@ database.ref("Picasso").child(child).on('value', (snapshot) => {
   var type = document.getElementById("Type-Selection");
   var order = document.getElementById("Order-Selection");
 
+  //
   switch(true){
     case(type.value == "Price" && order.value =="Ascending"):{
       items.sort(compareValueA);
@@ -192,7 +183,7 @@ database.ref("Picasso").child(child).on('value', (snapshot) => {
                 '<tr>'+'<th>'+"Item Name: " +'</th>'+'<th>'+items[i][1]+'</th>' + '</tr>'+
                 '<tr>'+'<th>'+"Item Price: "+ '</th>'+'<th>' +'$'+items[i][2]+'</th>' + '</tr>'+
                 '<tr>'+'<th>'+"Item Quantity: "+ '</th>'+'<th>' + items[i][3]+'</th>' + '</tr>'+
-                '<tr>'+'<th>'+"Aile Number: "+ '</th>'+'<th>' + items[i][4]+'</th>' + '</tr>'+
+                '<tr>'+'<th>'+"Aisle Number: "+ '</th>'+'<th>' + items[i][4]+'</th>' + '</tr>'+
                 '</table>';
     let newDiv = document.createElement('div');
     newDiv.id = "Box";

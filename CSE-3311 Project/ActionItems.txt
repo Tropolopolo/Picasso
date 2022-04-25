@@ -1,9 +1,11 @@
 1. Item Sorting
     Be able to sort by item attributes
+    complete
 
 2. Delete Stores
     Allow the user to delete a store.
     Be sure to give them a final warning when deleting a store.
+    complete
 
 3. Accounts Setup
 

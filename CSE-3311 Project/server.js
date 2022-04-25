@@ -83,6 +83,8 @@ database.ref("Picasso").child(child).on('value', (snapshot) => {
 
   let StoreRef = StoreContainer.child(Stores[DefaultStore]);
 
+  let items = [];
+
   StoreRef.on('value', (snapshot) => {
     localStorage.setItem("StoreName", snapshot.child("StoreName").val());
     localStorage.setItem("StoreNum", snapshot.child("StoreNum").val());
@@ -112,45 +114,17 @@ database.ref("Picasso").child(child).on('value', (snapshot) => {
             return;
         }
 
-        //console.log("ItemCategory: " + ItemCategory);
-
-         //Creating a list to put the data in
-        let li = document.createElement("ul");
-        li.className="list";
-        li.id="list";
-        li.innerHTML='<table class="projectTable">' +
-                    '<tr>'+'<th>'+"Item Category: "+'</th>'+'<th>'+ ItemCategory +'</th>'+'</tr>'+
-                    '<tr>'+'<th>'+"Item Name: " +'</th>'+'<th>'+ItemName+'</th>' + '</tr>'+
-                    '<tr>'+'<th>'+"Item Price: "+ '</th>'+'<th>' +'$'+ItemPrice+'</th>' + '</tr>'+
-                    '<tr>'+'<th>'+"Item Number: "+ '</th>'+'<th>' + ItemNumber+'</th>' + '</tr>'+
-                    '<tr>'+'<th>'+"Aile Number: "+ '</th>'+'<th>' + AileNumber+'</th>' + '</tr>'+
-                    '</table>';
-        let newDiv = document.createElement('div');
-        newDiv.id = "Box";
-        newDiv.className = 'Box1';
-
-        let colorDiv = document.createElement('div');
-        colorDiv.className = 'colorDiv';
-
-        //This May have to change. Code: 1101
-        let cl = document.createElement("button");
-        cl.className="close1";
-        cl.textContent="Delete Item";
-        cl.addEventListener("click", function(){
-          if (confirm("Are you sure you want to delete the project")) {
-            database.ref('Picasso').child(child).child(k).remove();
-          }
-        });
-
-        //creating a div to put the retrived data in
-        let Para = document.createElement('div');
-        Para.className="P1"
+        let rdata = [
+          ItemCategory,
+          ItemName,
+          ItemPrice,
+          ItemNumber,
+          AileNumber
+        ];
         
-        Para.appendChild(li);
-        newDiv.appendChild(Para);
-        newDiv.appendChild(cl);
-
-        document.getElementById('body').appendChild(newDiv);
+        //console.log(rdata);
+        items.push(rdata);
+        //document.getElementById('body').appendChild(newDiv);
       }
         //console.log(childData);
      });
@@ -164,9 +138,167 @@ database.ref("Picasso").child(child).on('value', (snapshot) => {
   let str = localStorage.getItem("StoreName");
   if(str == null){
     storeTitle.innerHTML = "Store: "; 
-  }else
+  }else{
     storeTitle.innerHTML = "Store: " + str;
+  }
+
+  var type = document.getElementById("Type-Selection");
+  var order = document.getElementById("Order-Selection");
+
+  switch(true){
+    case(type.value == "Price" && order.value =="Ascending"):{
+      items.sort(compareValueA);
+      //console.log(items);
+      break;
+    }
+    case(type.value == "Price" && order.value =="Descending"):{
+      items.sort(compareValueD);
+      //console.log(items);
+      break;
+    }
+    case(type.value == "Quantity" && order.value =="Ascending"):{
+      items.sort(compareQuantityA);
+      //console.log(items);
+      break;
+    }
+    case(type.value == "Quantity" && order.value =="Descending"):{
+      items.sort(compareQuantityD);
+      //console.log(items);
+      break;
+    }
+    case(type.value == "Aile" && order.value =="Ascending"):{
+      items.sort(compareAileA);
+      //console.log(items);
+      break;
+    }
+    case(type.value == "Aile" && order.value =="Descending"):{
+      items.sort(compareAileD);
+      //console.log(items);
+      break;
+    }
+  }
+
+  let divs = [];
+
+  //console.log(items);
+
+  for(var i = 0; i<items.length; i++){
+    //Creating a list to put the data in
+    let li = document.createElement("ul");
+    li.className="list";
+    li.id="list";
+    li.innerHTML='<table class="projectTable">' +
+                '<tr id="ic">'+'<th>'+"Item Category: "+'</th>'+'<th>'+ items[i][0] +'</th>'+'</tr>'+
+                '<tr>'+'<th>'+"Item Name: " +'</th>'+'<th>'+items[i][1]+'</th>' + '</tr>'+
+                '<tr>'+'<th>'+"Item Price: "+ '</th>'+'<th>' +'$'+items[i][2]+'</th>' + '</tr>'+
+                '<tr>'+'<th>'+"Item Quantity: "+ '</th>'+'<th>' + items[i][3]+'</th>' + '</tr>'+
+                '<tr>'+'<th>'+"Aile Number: "+ '</th>'+'<th>' + items[i][4]+'</th>' + '</tr>'+
+                '</table>';
+    let newDiv = document.createElement('div');
+    newDiv.id = "Box";
+    newDiv.className = 'Box1';
+ 
+    let colorDiv = document.createElement('div');
+    colorDiv.className = 'colorDiv';
+ 
+         //This May have to change. Code: 1101
+    let cl = document.createElement("button");
+    cl.className="close1";
+    cl.textContent="Delete Item";
+    cl.addEventListener("click", function(){
+      if (confirm("Are you sure you want to delete the project")) {
+        database.ref('Picasso').child(child).child(k).remove();
+      }
+    });
+ 
+    //creating a div to put the retrived data in
+    let Para = document.createElement('div');
+    Para.className="P1"
+         
+    Para.appendChild(li);
+    newDiv.appendChild(Para);
+    newDiv.appendChild(cl);
+ 
+    divs.push(newDiv);
+  }
+
+  displayer(divs);
 }
+
+function compareValueA(a,b)
+{
+  //console.log(parseFloat(a[2]));
+  if(a[2] === b[2]){
+    return 0;
+  }
+  else {
+    return (parseFloat(a[2]) < parseFloat(b[2]))?-1:1;
+  }
+}
+
+function compareValueD(a,b)
+{
+  //console.log(parseFloat(a[2]));
+  if(a[2] === b[2]){
+    return 0;
+  }
+  else {
+    return (parseFloat(a[2]) > parseFloat(b[2]))?-1:1;
+  }
+}
+
+function compareQuantityA(a,b)
+{
+  //console.log(parseFloat(a[2]));
+  if(a[3] === b[3]){
+    return 0;
+  }
+  else {
+    return (parseFloat(a[3]) < parseFloat(b[3]))?-1:1;
+  }
+}
+
+function compareQuantityD(a,b)
+{
+  //console.log(parseFloat(a[2]));
+  if(a[3] === b[3]){
+    return 0;
+  }
+  else {
+    return (parseFloat(a[3]) > parseFloat(b[3]))?-1:1;
+  }
+}
+
+function compareAileA(a,b)
+{
+  //console.log(parseFloat(a[2]));
+  if(a[4] === b[4]){
+    return 0;
+  }
+  else {
+    return (parseFloat(a[4]) < parseFloat(b[4]))?-1:1;
+  }
+}
+
+function compareAileD(a,b)
+{
+  //console.log(parseFloat(a[2]));
+  if(a[4] === b[4]){
+    return 0;
+  }
+  else {
+    return (parseFloat(a[4]) > parseFloat(b[4]))?-1:1;
+  }
+}
+
+function displayer(container)
+{
+  for(let i = 0; i < container.length; i++)
+  {
+    document.getElementById('body').appendChild(container[i]);
+  }
+}
+
 //To get data
 function errData(err){
   console.log("Error");

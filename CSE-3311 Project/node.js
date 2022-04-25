@@ -9,9 +9,19 @@ var btn2 = document.getElementById("myBtn2");
 var btn3 = document.getElementById("myBtn3");
 var btn4 = document.getElementById("myBtn4");
 var btn5 = document.getElementById("myBtn5");
+var btn6 = document.getElementById("myBtn6");
+
+
+var sortBtn = document.getElementById("SortButton");
+var sortIn = document.getElementById("sort_in");
+var exit = document.getElementById("exit-sorting");
+var type = document.getElementById("Type-Selection");
+var order = document.getElementById("Order-Selection");
 
 // Get the <span> element that closes the modal
 var span = document.getElementsByClassName("close");
+
+var sorter = document.getElementById("sort_input");
 
 // When the user clicks the button, open the modal 
 btn.onclick = function(){
@@ -52,6 +62,30 @@ btn5.onclick = function(){
     delStore(store);
   }
 };
+
+btn6.onclick = function(){
+  sortIn.style.display = "none";
+  //console.log("Type: " + type.value + "\n Order: " + order.value);
+  getData();
+};
+
+exit.onclick = function(){
+  sortIn.style.display = "none";
+};
+
+sortBtn.onclick = function(){
+  sortIn.style.display = "block";
+  //console.log("Displaying");
+};
+
+window.onload = function(){
+  let bottom = document.createAttribute("div");
+  bottom.className = "sort_in";
+  bottom.id="sort_input";
+  bottom.innerHTML = "<div id='sort_input'> + <button>check</button> + </div>";
+  let body = document.getElementById("Bottom-third");
+  //body.appendChild(bottom);
+}
 
 // When the user clicks on <span> (x), close the modal
 span[0].onclick = function() {

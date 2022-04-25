@@ -474,3 +474,53 @@ svg {
   outline-color: #5d8ffc;
   background-color: #5d8ffc;
 }
+
+.dropbtn{
+  padding: 13px;
+  font-size: 16px;
+  border: none;
+  background-color:#4654e1;
+}
+
+.sort_div{
+  position: relative;
+  display: inline-block;
+  left: 1px;
+}
+
+.sort_content{
+  display: none;
+  position: absolute;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  background-color: rgba(0,150,255,0.2);
+}
+
+.sort_content p{
+  color:rgb(0, 0, 0);
+  padding: 2px 8px;
+  text-decoration: none;
+  display: block;
+}
+
+.myBtn6{
+  width: 100%;
+  border:2px black;
+  padding: 10px 10px;
+  margin: 4px 2px;
+  background-color:white;
+  color: black;
+}
+
+.sort_in{
+  background-color: #5d8ffc;
+  bottom: 33%;
+  display: none;
+  margin: 20px;
+  padding: 50px;
+  border: 2px white;
+}
+
+.Sort-title{
+  color: white;
+}

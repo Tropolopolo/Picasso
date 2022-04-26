@@ -90,8 +90,6 @@ button {
   transition: 0.3s;
   -webkit-transition: 0.3s;
   -moz-transition: 0.3s;
-  position: relative;
-  left: -10%;
 }
 
 .signup:hover {
@@ -143,21 +141,6 @@ button {
   width: 500px;
 }
 
-input[type="text"],
-input[type="email"],
-input[type="password"] {
-  position: relative;
-  width: 300px; /* Full width */
-  padding: 12px; /* Some padding */
-  border: 1px solid #ccc; /* Gray border */
-  border-radius: 4px; /* Rounded borders */
-  box-sizing: border-box; /* Make sure that padding and width stays in place */
-  margin-top: 6px; /* Add a top margin */
-  margin-bottom: 16px; /* Bottom margin */
-  resize: vertical; /* Allow the user to vertically resize the textarea (not horizontally) */
-  left: 0%;
-}
-
 .main > input[type="text"],
 .main > input[type="email"],
 .main > input[type="password"] {
@@ -175,12 +158,12 @@ input[type="password"] {
 
 .container {
   position: relative;
-  width: 100%;
+  width: 500px;
   top: 20px;
   top: -15px;
-  left: -4%;
+  left: -20px;
   border-radius: 5px;
-  background-color: #eee;
+  background-color: #f2f2f2;
   padding: 20px;
 }
 
@@ -222,10 +205,25 @@ input[type="password"] {
   top: 125px;
 }
 
-.passMIN{
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+  position: relative;
+  width: 300px; /* Full width */
+  padding: 12px; /* Some padding */
+  border: 1px solid #ccc; /* Gray border */
+  border-radius: 4px; /* Rounded borders */
+  box-sizing: border-box; /* Make sure that padding and width stays in place */
+  margin-top: 6px; /* Add a top margin */
+  margin-bottom: 16px; /* Bottom margin */
+  resize: vertical; /* Allow the user to vertically resize the textarea (not horizontally) */
+  left: 100px;
+}
+
+.passMIN {
   font-family: "Nunito", sans-serif;
   font-size: 12px;
   opacity: 0.6;
-  left: 0%;
+  left: 20%;
   position: relative;
 }

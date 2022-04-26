@@ -23,10 +23,6 @@ document.getElementById("Form2").addEventListener("submit",submitStore);
 database.ref("Picasso").child(child).on("value",getData,errData);
 localStorage.setItem('x', 0);
 
-<<<<<<< HEAD
-database.ref("Picasso").child(child).on("value",getData,errData);
-=======
->>>>>>> 69eaca25ba48cf6ad733a89e75514312160f6095
 
 //*************************************************Get Data Function*************************************************************//
 //getData: retrieves the values stored in firebase, sorts these values if necessary, and then displayes them on the website.
@@ -39,24 +35,12 @@ function getData(){
     b[j].remove();
   }
 
-<<<<<<< HEAD
-  let ItemCategory;
-  let ItemName;
-  let ItemPrice;
-  let ItemNumber;
-  let AileNumber;
-  //console.log(data.val());
-  let objectData = data.val();
-  let keys = Object.keys(objectData);
-  //console.log(keys);
-=======
   //Adding a store value
   /*
     Adding a store value allows for data to be contained in each store.
     Adding this will make the children of the User into each store the User owns.
     Therefore to get each item we must first choose a store who's data will be displayed.
     This can be a data value associated with the User that we can allow the user to change.
->>>>>>> 69eaca25ba48cf6ad733a89e75514312160f6095
 
     What needs to be done:
     Need to define a variable to hold the store keys.
@@ -66,19 +50,10 @@ function getData(){
     Need to change how we send data to the database to store new values.
   */
 
-<<<<<<< HEAD
-    let k = keys[i];
-    ItemCategory  =objectData[k].ItemCategory;
-    ItemName      =objectData[k].ItemName;
-    ItemPrice     =objectData[k].ItemPrice;
-    ItemNumber    =objectData[k].ItemNumber;
-    AileNumber    =objectData[k].AileNumber;
-=======
   //values needed to determine the store that we will retrieve product data from.
   var DefaultStore;
   var StoreContainer;
   var datavalues;
->>>>>>> 69eaca25ba48cf6ad733a89e75514312160f6095
 
   //Routine that retrieves all the store keys along with the default store value.
   database.ref("Picasso").child(child).on('value', (snapshot) => {
@@ -210,89 +185,6 @@ function getData(){
     li.className="list";
     li.id="list";
     li.innerHTML='<table class="projectTable">' +
-<<<<<<< HEAD
-                '<tr>'+'<th>'+"Item Category: "+'</th>'+'<th>'+ ItemCategory +'</th>'+'</tr>'+
-                '<tr>'+'<th>'+"Item Name: " +'</th>'+'<th>'+ItemName+'</th>' + '</tr>'+
-                '<tr>'+'<th>'+"Item Price: "+ '</th>'+'<th>' +'$'+ItemPrice+'</th>' + '</tr>'+
-                '<tr>'+'<th>'+"Item Number: "+ '</th>'+'<th>' + ItemNumber+'</th>' + '</tr>'+
-                '<tr>'+'<th>'+"Aile Number: "+ '</th>'+'<th>' + AileNumber+'</th>' + '</tr>'+
-                '</table>';
-
-  //Creating a box
-  //All this is just to put the data in a box in html, style is in css as Box1 and P1
-  //toAdd is a document fragment to put the box in
-  //var toAddBox = document.createDocumentFragment();
-  //creating a div so that we can give the box an id and class
-  let newDiv = document.createElement('div');
-  newDiv.id = "Box";
-  newDiv.className = 'Box1';
-
-  let colorDiv = document.createElement('div');
-  colorDiv.className = 'colorDiv';
-
-  
-
-  let cl = document.createElement("button");
-  cl.className="close1";
-  cl.textContent="Delete Item";
-  cl.addEventListener("click", function(){
-    if (confirm("Are you sure you want to delete the project")) {
-      database.ref('Picasso').child(child).child(k).remove();
-    }
-  });
-
-  
-  //creating a div to put the retrived data in
-  let Para = document.createElement('div');
-  Para.className="P1";
-  //appending to html
-  // let seeMore = document.createElement("button");
-  // seeMore.className="seeMore";
-  // seeMore.innerHTML="see more";
-  // seeMore.onclick=function(){
-  //   location.href = 'info.html'
-  //   localStorage.setItem("value",k);
-  //   console.log(k);
-  // };
-  
-  
-  Para.appendChild(li);
-  newDiv.appendChild(Para);
-  newDiv.appendChild(cl);
-
-  //newDiv.appendChild(seeMore);
-  // newDiv.appendChild(dropDownDiv);
-  //toAddBox.appendChild(newDiv);
-  let show = document.getElementById("search_btn");
-  
-  show.addEventListener("click",function(){
-
-    let x= document.getElementById("search_inp").value;
-    localStorage.setItem("x",x);
-
-  });
-  let b=localStorage.getItem("x");
-
-  console.log(b);
-
-  if(b==="")
-  {
-    document.getElementById('body').appendChild(newDiv);
-    continue;
-  }
-
-  if(ItemCategory===b){
-    document.getElementById('body').appendChild(newDiv);
-  }
-  if(ItemName===b){
-    document.getElementById('body').appendChild(newDiv);
-  }
-  if(AileNumber===b){
-    document.getElementById('body').appendChild(newDiv);
-  }
-
-
-=======
                 '<tr id="ic">'+'<th>'+"Item Category: "+'</th>'+'<th>'+ items[i][0] +'</th>'+'</tr>'+
                 '<tr>'+'<th>'+"Item Name: " +'</th>'+'<th>'+items[i][1]+'</th>' + '</tr>'+
                 '<tr>'+'<th>'+"Item Price: "+ '</th>'+'<th>' +'$'+items[i][2]+'</th>' + '</tr>'+
@@ -323,7 +215,6 @@ function getData(){
     newDiv.appendChild(cl);
  
     divs.push(newDiv);
->>>>>>> 69eaca25ba48cf6ad733a89e75514312160f6095
   }
 
   //Display the new html elements.
@@ -457,17 +348,11 @@ function submitForm(e){
     ItemNumber:getElementVal("ItemNumber"),
     AileNumber:getElementVal("AileNumber")
   };
-<<<<<<< HEAD
-  let formDB = database.ref("Picasso/"+child);
-  //pushing the data to the databases
-  formDB.push(data);
-=======
 
   //console.log(Stores[DefaultStore]);
   let formDB = database.ref("Picasso/" + child);
   //pushing the data to the databases 
   formDB.child(Stores[DefaultStore]).push(data);
->>>>>>> 69eaca25ba48cf6ad733a89e75514312160f6095
 
   //showing an alert at the top to conform that the data has been sent
   showAlert();
@@ -534,8 +419,6 @@ function out(){
 }
 
 
-<<<<<<< HEAD
-=======
 var currentTab = 0; // Current tab is set to be the first tab (0)
 
 //Anmol Input
@@ -651,4 +534,3 @@ function delStore(s){
     window.reload();
   });
 }
->>>>>>> 69eaca25ba48cf6ad733a89e75514312160f6095

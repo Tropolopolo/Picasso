@@ -15,21 +15,13 @@ const firebaseConfig = {
  //if it does not exists, it is created
  let database = firebase.database();
 
-<<<<<<< HEAD
-=======
  //When user is authorized change webpage to homepage
->>>>>>> 69eaca25ba48cf6ad733a89e75514312160f6095
  firebase.auth().onAuthStateChanged((user) => {
    if (user) {
      var user = user.uid;
      localStorage.setItem("uid",user);
      
-<<<<<<< HEAD
-     //window.close();
-     location.href = 'index.html'
-=======
      location.href = 'index.html';
->>>>>>> 69eaca25ba48cf6ad733a89e75514312160f6095
      document.getElementById("login_div").style.display="none";
      document.getElementById("user_div").style.display="none";
      document.getElementById("signup_id").style.display="none";
@@ -40,13 +32,10 @@ const firebaseConfig = {
     document.getElementById("signup_div").style.display="none";
    }
  });
-<<<<<<< HEAD
-=======
 
 //login: logs the user in if credentials are correct
 //input: html element values
 //output: change to home page and load in user data.
->>>>>>> 69eaca25ba48cf6ad733a89e75514312160f6095
 function login(){
    let userEmail=document.getElementById("email_id").value;
    let userPass=document.getElementById("password_id").value;
@@ -64,34 +53,19 @@ function login(){
   });
 }
 
-<<<<<<< HEAD
-function logout(){
-  firebase.auth().signOut().then(() => {
-    //location.href = 'login.html'
-=======
 //unused legacy code.
 function logout(){
   localStorage.clear();
   firebase.auth().signOut().then(() => {
->>>>>>> 69eaca25ba48cf6ad733a89e75514312160f6095
 
   }).catch((error) => {
 
   });
-<<<<<<< HEAD
-  //window.alert("sdfsdfgefgsfsg");
-  //location.href = 'login.html'
-}
-
-localStorage.setItem('val',lo);
-
-=======
 }
 
 //createNewUser: Adjusts the styles of some html elements
 //input: html elements
 //output: displays and undisplays html elements
->>>>>>> 69eaca25ba48cf6ad733a89e75514312160f6095
 function createNewUser(){
   document.getElementById("signup_div").style.display="block";
   document.getElementById("signup_id").style.display="none";
@@ -99,12 +73,9 @@ function createNewUser(){
 
 }
 
-<<<<<<< HEAD
-=======
 //signup: update firebase authentication with new user
 //input: html element values
 //output: new user added to database.
->>>>>>> 69eaca25ba48cf6ad733a89e75514312160f6095
 function signup(){
   let signupEmail=document.getElementById("email").value;
   let signupPass=document.getElementById("password").value;
@@ -113,10 +84,6 @@ function signup(){
     // Signed in 
     var user = userCredential.user;
     window.alert("user");
-<<<<<<< HEAD
-
-=======
->>>>>>> 69eaca25ba48cf6ad733a89e75514312160f6095
     // ...
   })
   .catch((error) => {
@@ -125,10 +92,6 @@ function signup(){
     window.alert('Error:'+errorMessage);
     // ..
   });
-<<<<<<< HEAD
-
-=======
->>>>>>> 69eaca25ba48cf6ad733a89e75514312160f6095
 }
 
 
@@ -138,18 +101,12 @@ function createNewUser() {
   document.getElementById("myModal").style.display = "block";
 }
 
-<<<<<<< HEAD
-=======
 //removes modal
->>>>>>> 69eaca25ba48cf6ad733a89e75514312160f6095
 function closefn(){
   document.getElementById("myModal").style.display = "none";
 }
 
-<<<<<<< HEAD
-=======
 //Anmol's Input
->>>>>>> 69eaca25ba48cf6ad733a89e75514312160f6095
 const user = firebase.auth().currentUser;
 if (user !== null) {
   // The user object has basic properties such as display name, email, etc.
@@ -160,9 +117,5 @@ if (user !== null) {
   // this value to authenticate with your backend server, if
   // you have one. Use User.getIdToken() instead.
   const uid = user.uid;
-<<<<<<< HEAD
-  window.alert("email is"+email);
-=======
   window.alert("email is "+email);
->>>>>>> 69eaca25ba48cf6ad733a89e75514312160f6095
 }

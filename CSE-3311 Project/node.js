@@ -1,8 +1,5 @@
-<<<<<<< HEAD
-=======
 //send website html elements to values that can be used in code.
 
->>>>>>> 69eaca25ba48cf6ad733a89e75514312160f6095
 // Get the modal
 var modal = document.getElementById("myModal");
 var modal2 = document.getElementById("myModal2");

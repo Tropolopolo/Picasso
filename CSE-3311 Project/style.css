@@ -68,8 +68,6 @@ body {
   background-color: rgb(70, 107, 161);
 }
 
-<<<<<<< HEAD
-=======
 .AddStore {
   position: relative;
   left: 55%;
@@ -104,7 +102,6 @@ body {
   background-color: rgb(70, 107, 161);
 }
 
->>>>>>> 69eaca25ba48cf6ad733a89e75514312160f6095
 .logout {
   position: relative;
   left: 50%;
@@ -418,57 +415,6 @@ td {
 }
 .seeMore:hover {
   background-color: rgb(71, 67, 67);
-<<<<<<< HEAD
-}
-
-.search_div {
-  position: relative;
-  display: flex;
-  justify-content: center;
-  top: 10px;
-}
-.search_class {
-  float: center;
-  background-color: #435c83;
-  width: 300px;
-  height: 44px;
-  border: 2px;
-  border-color: black;
-  border-radius: 5px;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-}
-
-.search_input {
-  all: unset;
-  font: 16px system-ui;
-  color: #fff;
-  height: 100%;
-  width: 100%;
-  padding: 6px 10px;
-}
-
-::placeholder {
-  color: #fff;
-  opacity: 0.7;
-}
-
-svg {
-  color: #fff;
-  fill: currentColor;
-  width: 24px;
-  height: 24px;
-  padding: 10px;
-}
-
-.search_btn {
-  all: unset;
-  cursor: pointer;
-  width: 44px;
-  height: 44px;
-=======
->>>>>>> 69eaca25ba48cf6ad733a89e75514312160f6095
 }
 
 .search_div {

@@ -1,0 +1,229 @@
+body {
+  background-color: rgb(229, 239, 243);
+  /* background-image: url("wall-paint.jpg"); */
+  height: 500px; /* You must set a specified height */
+  background-position: center; /* Center the image */
+  background-repeat: repeat; /* Do not repeat the image */
+  background-size: cover; /* Resize the background image to cover the entire container */
+  font-size: 16px;
+  font: Arial, Helvetica, sans-serif;
+}
+
+.containerdiv {
+  margin: auto;
+  max-width: 400px;
+  border: 5px solid rgb(229, 239, 243);
+  padding: 5px;
+  border-radius: 10px;
+  box-shadow: -10px 10px 30px 10px rgb(193, 193, 194);
+}
+
+input,
+button {
+  font-family: "Nunito", sans-serif;
+  font-weight: 700;
+}
+
+.main,
+.loggedin {
+  width: 20%;
+  margin: 0% auto;
+  margin-top: 200px;
+  padding: 20px;
+  display: none;
+}
+
+.main input {
+  display: block;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background: #fff;
+  padding: 15px;
+  outline: none;
+  width: 100%;
+  margin-bottom: 20px;
+  transition: 0.3s;
+  -webkit-transition: 0.3s;
+  -moz-transition: 0.3s;
+}
+.main input:focus {
+  border: 1px solid #999;
+}
+
+.main button,
+.loggedin button {
+  position: relative;
+  background: #5d8ffc;
+  color: #fff;
+  border: 1px solid #5d8ffc;
+  border-radius: 5px;
+  padding: 15px;
+  display: block;
+  width: 300px;
+  transition: 0.3s;
+  -webkit-transition: 0.3s;
+  -moz-transition: 0.3s;
+  left: -100px;
+}
+
+.main button:hover,
+.loggedin button:hover {
+  background: #fff;
+  color: #5d8ffc;
+  border: 1px solid #5d8ffc;
+  cursor: pointer;
+}
+
+.signup {
+  width: 20%;
+  margin: 0% auto;
+  margin-top: 0px;
+  padding: 20px;
+  display: none;
+  background: #5d8ffc;
+  color: #fff;
+  border: 1px solid #5d8ffc;
+  border-radius: 5px;
+  padding: 15px;
+  display: block;
+  width: 200px;
+  transition: 0.3s;
+  -webkit-transition: 0.3s;
+  -moz-transition: 0.3s;
+}
+
+.signup:hover {
+  background: #fff;
+  color: #5d8ffc;
+  border: 1px solid #5d8ffc;
+  cursor: pointer;
+}
+
+.main_signup input {
+  display: block;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background: #fff;
+  padding: 15px;
+  outline: none;
+  width: 100%;
+  margin-bottom: 20px;
+  transition: 0.3s;
+  -webkit-transition: 0.3s;
+  -moz-transition: 0.3s;
+}
+
+.main_signup input:focus {
+  border: 1px solid #999;
+}
+
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgba(0, 0, 0); /* Black w/ opacity */
+  background-color: rgba(0, 0, 0, 0.5); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+  border-radius: 25px;
+  background-color: #fefefe;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 500px;
+}
+
+.main > input[type="text"],
+.main > input[type="email"],
+.main > input[type="password"] {
+  position: relative;
+  width: 300px; /* Full width */
+  padding: 12px; /* Some padding */
+  border: 1px solid #ccc; /* Gray border */
+  border-radius: 4px; /* Rounded borders */
+  box-sizing: border-box; /* Make sure that padding and width stays in place */
+  margin-top: 6px; /* Add a top margin */
+  margin-bottom: 16px; /* Bottom margin */
+  resize: vertical; /* Allow the user to vertically resize the textarea (not horizontally) */
+  left: -100px;
+}
+
+.container {
+  position: relative;
+  width: 500px;
+  top: 20px;
+  top: -15px;
+  left: -20px;
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 20px;
+}
+
+/* location of the form title in the middle top */
+.Form {
+  position: relative;
+  left: 35%;
+}
+
+.close {
+  color: grey;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+/* Hover over the close button */
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.heading {
+  /* font-family: "Nunito", sans-serif; */
+  color: #5d8ffc;
+  font-size: 50px;
+  position: absolute;
+  top: -20px;
+  right: 575px;
+  font-family: Arial, sans-serif;
+}
+
+.para {
+  font-family: "Nunito", sans-serif;
+  font-size: 20px;
+  position: absolute;
+  top: 125px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+  position: relative;
+  width: 300px; /* Full width */
+  padding: 12px; /* Some padding */
+  border: 1px solid #ccc; /* Gray border */
+  border-radius: 4px; /* Rounded borders */
+  box-sizing: border-box; /* Make sure that padding and width stays in place */
+  margin-top: 6px; /* Add a top margin */
+  margin-bottom: 16px; /* Bottom margin */
+  resize: vertical; /* Allow the user to vertically resize the textarea (not horizontally) */
+  left: 100px;
+}
+
+.passMIN {
+  font-family: "Nunito", sans-serif;
+  font-size: 12px;
+  opacity: 0.6;
+  left: 20%;
+  position: relative;
+}

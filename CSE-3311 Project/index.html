@@ -5,16 +5,35 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="style.css" />
-    <title>Picaso</title>
+    <title>Picasso InvSys</title>
   </head>
   <body id="body">
     <!-- The top navigation bar -->
     <div class="topnav">
+<<<<<<< HEAD
       <!-- Project name = Picasso -->
+=======
+      <!-- poject name = Picasso -->
+>>>>>>> 69eaca25ba48cf6ad733a89e75514312160f6095
       <button class="active" style="font-size:20px">Picasso</button>
       <!-- Form in Modal -->
       <button class="AddProject" id="myBtn">
-        <span>&#43;</span> Add Project(Modal)
+        <span>&#43;</span> Add Product
+      </button>
+      <button class="logout" id="log_out" onclick="out()">
+        Logout
+      </button>
+      <button class="AddStore" id="myBtn2">
+        <span>&#43;</span> Add Store
+      </button>
+      <button class="AddNext" id="myBtn3">
+        <span></span> Previous Store
+      </button>
+      <button class="AddNext" id="myBtn4">
+        <span></span> Next Store
+      </button>
+      <button class="AddNext" id="myBtn5">
+        <span>&#8722</span> Delete Store
       </button>
       <button class="logout" id="log_out" onclick="out()">
         Logout
@@ -26,7 +45,7 @@
           <!-- The close button -->
           <span class="close">&times;</span>
           <div class="Form">
-            <h1>Project Form</h1>
+            <h1>Product Form</h1>
           </div>
           <!-- Form -->
           <div class="container">
@@ -34,6 +53,7 @@
               <div class="alert">Form sent</div>
               <div class ="tab">
                 <label for="ItemCategory">Item Category &emsp;</label> <br>
+<<<<<<< HEAD
                 <input
                   type="text"
                   id="ItemCategory"
@@ -68,6 +88,43 @@
                   id="AileNumber"
                   placeholder="Aile the item is stored"
                 />
+=======
+                <select name="ItemCategory" id="ItemCategory"> 
+                  <option>Inside Cooler</option>
+                  <option>Outside Cooler</option>
+                </select> <br>
+                <label for="ItemName">Item Name &emsp;&emsp;&ensp;&ensp;</label><br>
+                <input
+                  type="text"
+                  id="ItemName"
+                  placeholder="Name of the Item"
+  
+                />
+                <br />
+                <label for="ItemPrice">Item Price</label><br>
+                <input
+                  type="number"
+                  id="ItemPrice"
+                  placeholder="Price of the items"
+                  step="0.01"
+                />
+                <br />
+                <label for="ItemNumber">Number of Items</label><br>
+                <input
+                  type="number"
+                  id="ItemNumber"
+                  placeholder="Number of specific item"
+                />
+                <br />
+                <label for="Aile">Aile Number</label><br>
+                <select name="Aile" id="AileNumber">
+                  <option>1</option>
+                  <option>2</option>
+                  <option>3</op
+                    tion>
+                  <option>4</option>
+                </select>
+>>>>>>> 69eaca25ba48cf6ad733a89e75514312160f6095
                 <br />
               </div>
               <input type="submit" value="Submit" id="submitId"></input>
@@ -75,9 +132,85 @@
           </div>
         </div>
       </div>
+<<<<<<< HEAD
     </div>
     <br><br>
+=======
+
+      <div id="myModal2" class="modal">
+        <!-- Modal content -->
+        <div class="modal-content">
+          <!-- The close button -->
+          <span class="close">&times;</span>
+          <div class="Form">
+            <h1>Store Form</h1>
+          </div>
+          <!-- Form -->
+          <div class="container">
+            <form action="" id="Form2">
+              <div class="alert">Form sent</div>
+              <div class ="tab">
+                <label for="StoreName">Store Name &emsp;</label> <br>
+                <input
+                  type="text"
+                  id="StoreName"
+                  placeholder="Name of the Store"
+                /><br>
+
+                <label for="StoreNum">Store Number &emsp;</label> <br>
+                <input
+                  type="number"
+                  id="StoreNum"
+                  placeholder="Store Number"
+                /><br>
+
+              </div>
+              <input type="submit" value="Submit" id="submitId"></input>
+            </form>
+          </div>
+        </div>
+      </div>
     </div>
+    <div class="search_div">
+      <form id="search" class="search_class"> 
+        <input type="search" class="search_input" id="search_inp" name="qq" placeholder="Search...">
+        <button class="search_btn" onclick="search()"><svg viewBox="0 0 1024 1024"><path class="path1" d="M848.471 928l-263.059-263.059c-48.941 36.706-110.118 55.059-177.412 55.059-171.294 0-312-140.706-312-312s140.706-312 312-312c171.294 0 312 140.706 312 312 0 67.294-24.471 128.471-55.059 177.412l263.059 263.059-79.529 79.529zM189.623 408.078c0 121.364 97.091 218.455 218.455 218.455s218.455-97.091 218.455-218.455c0-121.364-103.159-218.455-218.455-218.455-121.364 0-218.455 97.091-218.455 218.455z"></path></svg>
+        </button>
+      </form>
+
+      <div class="sort_div">
+        <button class="dropbtn" id="SortButton">Sorting</button>
+      </div>
+>>>>>>> 69eaca25ba48cf6ad733a89e75514312160f6095
+    </div>
+
+    <div class="sort_in" id="sort_in">
+      <button style="position:relative; left: 0%; color: white;" id="exit-sorting">X</button>
+      <p class="Sort-title">Sorting</p>
+      <label for="Sort-title" style="color:white; width:100%;">Type</label><br>
+      <select name="Typeing" id="Type-Selection">
+        <option value="">-</option>
+        <option value="Price">Price</option>
+        <option value="Quantity">Quantity</option>
+        <option value="Aile">Aile</option>
+      </select><br>
+      <label for="Sort-title" style="color:white; width:100%;">Order</label><br>
+      <select name="Ordering" id="Order-Selection">
+        <option value="">-</option>
+        <option value="Ascending">Ascending</option>
+        <option value="Descending">Descending</option>
+      </select><br>
+      <br>
+
+      <button class="myBtn6" id="myBtn6">Apply</button>
+    </div>
+    
+
+    <div id="StoreName">
+      <p class="StoreTitle" id="StoreTitle"></p>
+    </div>
+
+    <br><br>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/7.14.1-0/firebase.js"></script>
     <script src="server.js"></script>
     <script src="node.js"></script>

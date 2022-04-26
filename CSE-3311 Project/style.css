@@ -68,6 +68,43 @@ body {
   background-color: rgb(70, 107, 161);
 }
 
+<<<<<<< HEAD
+=======
+.AddStore {
+  position: relative;
+  left: 55%;
+  background-color: #5d8ffc;
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+}
+
+/* hover for addbutton */
+.AddStore:hover {
+  display: block;
+  background-color: rgb(70, 107, 161);
+}
+
+.AddNext {
+  position: relative;
+  right: 0%;
+  background-color: #5d8ffc;
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+}
+
+/* hover for addbutton */
+.AddNext:hover {
+  display: block;
+  background-color: rgb(70, 107, 161);
+}
+
+>>>>>>> 69eaca25ba48cf6ad733a89e75514312160f6095
 .logout {
   position: relative;
   left: 50%;
@@ -381,6 +418,7 @@ td {
 }
 .seeMore:hover {
   background-color: rgb(71, 67, 67);
+<<<<<<< HEAD
 }
 
 .search_div {
@@ -429,4 +467,114 @@ svg {
   cursor: pointer;
   width: 44px;
   height: 44px;
+=======
+>>>>>>> 69eaca25ba48cf6ad733a89e75514312160f6095
+}
+
+.search_div {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  top: 10px;
+}
+.search_class {
+  float: center;
+  background-color: #4654e1;
+  width: 300px;
+  height: 44px;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.search_input {
+  all: unset;
+  font: 16px system-ui;
+  color: #fff;
+  height: 100%;
+  width: 100%;
+  padding: 6px 10px;
+}
+
+::placeholder {
+  color: #fff;
+  opacity: 0.7;
+}
+
+svg {
+  color: #fff;
+  fill: currentColor;
+  width: 24px;
+  height: 24px;
+  padding: 10px;
+}
+
+.search_btn {
+  all: unset;
+  cursor: pointer;
+  width: 44px;
+  height: 44px;
+}
+
+.StoreTitle{
+  position: relative;
+  left: 2%;
+  font-size: xx-large;
+  font: 32px system-ui;
+  color: #fefefe;
+  width:fit-content;
+  outline: auto;
+  outline-color: #5d8ffc;
+  background-color: #5d8ffc;
+}
+
+.dropbtn{
+  padding: 13px;
+  font-size: 16px;
+  border: none;
+  background-color:#4654e1;
+}
+
+.sort_div{
+  position: relative;
+  display: inline-block;
+  left: 1px;
+}
+
+.sort_content{
+  display: none;
+  position: absolute;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  background-color: rgba(0,150,255,0.2);
+}
+
+.sort_content p{
+  color:rgb(0, 0, 0);
+  padding: 2px 8px;
+  text-decoration: none;
+  display: block;
+}
+
+.myBtn6{
+  width: 100%;
+  border:2px black;
+  padding: 10px 10px;
+  margin: 4px 2px;
+  background-color:white;
+  color: black;
+}
+
+.sort_in{
+  background-color: #5d8ffc;
+  bottom: 33%;
+  display: none;
+  margin: 20px;
+  padding: 50px;
+  border: 2px white;
+}
+
+.Sort-title{
+  color: white;
 }

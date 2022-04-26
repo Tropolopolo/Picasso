@@ -106,6 +106,7 @@ function closefn(){
   document.getElementById("myModal").style.display = "none";
 }
 
+//Anmol's Input
 const user = firebase.auth().currentUser;
 if (user !== null) {
   // The user object has basic properties such as display name, email, etc.

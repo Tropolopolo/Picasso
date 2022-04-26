@@ -108,8 +108,9 @@ window.onclick = function(event) {
 var currentTab = 0;
 var currentTab1 = 1;// Current tab is set to be the first tab (0)
 showTab(1); // Display the current tab
-showTab(0);
+showTab(0); // Displays the Store From Tab
 
+//Anmol's Input
 function showTab(n) {
   // This function will display the specified tab of the form ...
   var x = document.getElementsByClassName("tab");
@@ -147,6 +148,7 @@ function showTab(n) {
   fixStepIndicator(n)
 }
 
+//Anmol's Input
 function nextPrev(n) {
   // This function will figure out which tab to display
   var x = document.getElementsByClassName("tab");
@@ -164,6 +166,7 @@ function nextPrev(n) {
   showTab(currentTab);
 }
 
+//Anmol's Input
 function validateForm() {
   // This function deals with validation of the form fields
   var x, y, i, valid = true;
@@ -186,6 +189,7 @@ function validateForm() {
   return valid; // return the valid status
 }
 
+//Anmol's Input
 function fixStepIndicator(n) {
   // This function removes the "active" class of all steps...
   var i, x = document.getElementsByClassName("step");

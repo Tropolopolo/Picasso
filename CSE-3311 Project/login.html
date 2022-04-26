@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style-form.css" />
+
+
+    <title>User Select</title>
+  </head>
+  <body>
+    <div class = 'heading'><h1>Picasso</h1></div>
+    <!-- <div class = 'para'> <h3>Easy inventory management</h3></div> -->
+    <div class="containerdiv">
+      <div class="main" id="login_div">        
+        <input type="email" placeholder="Email" id="email_id" />
+        <input type="password" placeholder="Password" id="password_id" />
+        <button onclick="login()">Login</button>
+        <br />
+      </div>
+      <button class="signup" id="signup_id" onclick="createNewUser()" style="display:none;">
+        Create new account
+      </button>
+
+    </div>
+
+    <div id="myModal" class="modal">
+      <!-- Modal content -->
+      <div class="modal-content">
+        <!-- The close button -->
+        <button class="close" onclick="closefn()">X</button>
+        <div class="Form">
+          <h1>Sign Up Form</h1>
+        </div>
+        <!-- Form -->
+        <div class="container" id="signup_dev">
+          <form action="" id="Form">
+              <input type="text" placeholder="First Name" id="fname"/>
+              <input type="text" placeholder="Last Name" id="lanme" />
+              <input type="email" placeholder="Email" id="email" />
+              <input type="password" placeholder="Password" id="password" required minlength="6" maxlength="255" pattern="(?=.*[0-9a-zA-Z]).{6,}"/>
+              <p class="passMIN">At least 6 characters required for password</p>
+              <button class="signup" onclick="signup()">Sign Up</button>
+
+            <!-- <input type="submit" value="Submit"></input> -->
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/7.14.1-0/firebase.js"></script>
+    <script src="Login.js"></script>
+  </body>
+</html>

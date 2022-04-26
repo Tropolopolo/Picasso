@@ -15,13 +15,13 @@ const firebaseConfig = {
  //if it does not exists, it is created
  let database = firebase.database();
 
+ //When user is authorized change webpage to homepage
  firebase.auth().onAuthStateChanged((user) => {
    if (user) {
      var user = user.uid;
      localStorage.setItem("uid",user);
      
-     //window.close();
-     location.href = 'index.html'
+     location.href = 'index.html';
      document.getElementById("login_div").style.display="none";
      document.getElementById("user_div").style.display="none";
      document.getElementById("signup_id").style.display="none";
@@ -32,6 +32,10 @@ const firebaseConfig = {
     document.getElementById("signup_div").style.display="none";
    }
  });
+
+//login: logs the user in if credentials are correct
+//input: html element values
+//output: change to home page and load in user data.
 function login(){
    let userEmail=document.getElementById("email_id").value;
    let userPass=document.getElementById("password_id").value;
@@ -49,20 +53,19 @@ function login(){
   });
 }
 
+//unused legacy code.
 function logout(){
   localStorage.clear();
   firebase.auth().signOut().then(() => {
-    //location.href = 'login.html'
 
   }).catch((error) => {
 
   });
-  //window.alert("sdfsdfgefgsfsg");
-  //location.href = 'login.html'
 }
 
-//localStorage.setItem('val',lo);
-
+//createNewUser: Adjusts the styles of some html elements
+//input: html elements
+//output: displays and undisplays html elements
 function createNewUser(){
   document.getElementById("signup_div").style.display="block";
   document.getElementById("signup_id").style.display="none";
@@ -70,6 +73,9 @@ function createNewUser(){
 
 }
 
+//signup: update firebase authentication with new user
+//input: html element values
+//output: new user added to database.
 function signup(){
   let signupEmail=document.getElementById("email").value;
   let signupPass=document.getElementById("password").value;
@@ -95,6 +101,7 @@ function createNewUser() {
   document.getElementById("myModal").style.display = "block";
 }
 
+//removes modal
 function closefn(){
   document.getElementById("myModal").style.display = "none";
 }
@@ -109,5 +116,5 @@ if (user !== null) {
   // this value to authenticate with your backend server, if
   // you have one. Use User.getIdToken() instead.
   const uid = user.uid;
-  window.alert("email is"+email);
+  window.alert("email is "+email);
 }

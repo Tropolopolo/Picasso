@@ -1,3 +1,4 @@
+//send website html elements to values that can be used in code.
 
 // Get the modal
 var modal = document.getElementById("myModal");
@@ -28,10 +29,12 @@ btn.onclick = function(){
   modal.style.display = "block";
 };
 
+//Displays the Store form
 btn2.onclick = function(){
   modal2.style.display = "block";
 };
 
+//Moves the previous store
 btn3.onclick = function(){
   let y = localStorage.getItem('x');
   if(y != null)
@@ -43,6 +46,7 @@ btn3.onclick = function(){
   localStorage.setItem('x', x);
 };
 
+//Moves to the Next store
 btn4.onclick = function(){
   let y = localStorage.getItem('x');
   if(y != null)
@@ -54,6 +58,7 @@ btn4.onclick = function(){
   localStorage.setItem('x', x);
 };
 
+//Deletes the current store
 btn5.onclick = function(){
   var check = window.confirm("Are you sure you want to delete this store?");
   if(check)
@@ -63,35 +68,28 @@ btn5.onclick = function(){
   }
 };
 
+//undisplay sort box and retrieve new data with new sort parameters
 btn6.onclick = function(){
   sortIn.style.display = "none";
-  //console.log("Type: " + type.value + "\n Order: " + order.value);
   getData();
 };
 
+//undisplay sort box
 exit.onclick = function(){
   sortIn.style.display = "none";
 };
 
+//display sort box
 sortBtn.onclick = function(){
   sortIn.style.display = "block";
-  //console.log("Displaying");
 };
-
-window.onload = function(){
-  let bottom = document.createAttribute("div");
-  bottom.className = "sort_in";
-  bottom.id="sort_input";
-  bottom.innerHTML = "<div id='sort_input'> + <button>check</button> + </div>";
-  let body = document.getElementById("Bottom-third");
-  //body.appendChild(bottom);
-}
 
 // When the user clicks on <span> (x), close the modal
 span[0].onclick = function() {
   modal.style.display = "none";
 };
 
+// When the user clicks on <span> (x), close the modal
 span[1].onclick = function(){
   modal2.style.display = "none";
 };

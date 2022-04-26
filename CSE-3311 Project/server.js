@@ -25,14 +25,13 @@ localStorage.setItem('x', 0);
 
 
 //*************************************************Get Data Function*************************************************************//
-//To get data
+//getData: retrieves the values stored in firebase, sorts these values if necessary, and then displayes them on the website.
+//input: firebase database values.
+//output: new html ui elements that display each product entry.
 function getData(){
-  //data.preventDefault();
-  //let l = document.querySelectorAll(".list");
   let b = document.querySelectorAll(".Box1");
 
   for(var j=0; j<b.length; j++ ){
-    //l[i].remove();
     b[j].remove();
   }
 
@@ -51,37 +50,48 @@ function getData(){
     Need to change how we send data to the database to store new values.
   */
 
-var DefaultStore;
-var StoreContainer;
-var datavalues;
+  //values needed to determine the store that we will retrieve product data from.
+  var DefaultStore;
+  var StoreContainer;
+  var datavalues;
 
-database.ref("Picasso").child(child).on('value', (snapshot) => {
-  StoreContainer = database.ref("Picasso").child(child); //Keys of each store
-  DefaultStore = snapshot.child("DefaultStore").val();
-  datavalues = snapshot.val();
-}, (errorObject) => {
-  console.log('The read failed: ' + errorObject.name);
-});
+  //Routine that retrieves all the store keys along with the default store value.
+  database.ref("Picasso").child(child).on('value', (snapshot) => {
+    StoreContainer = database.ref("Picasso").child(child); //Keys of each store
+    DefaultStore = snapshot.child("DefaultStore").val();
+    datavalues = snapshot.val();
+  }, (errorObject) => {
+    console.log('The read failed: ' + errorObject.name);
+  });
 
+  //values that represent the data stored about the products.
   let ItemCategory;
   let ItemName;
   let ItemPrice;
   let ItemNumber;
   let AileNumber;
   
+  //used to keep legacy code working.
   let objectData = datavalues;
-  let Stores = Object.keys(objectData);
+  let Stores = Object.keys(objectData); //obtained list of store keys.
 
-  Stores.forEach(lstoreStore);
+  Stores.forEach(lstoreStore); //Add the value obtained from the key to local storage.
 
+  //store a couple data points the help describe the store we are currently on into local storage.
   localStorage.setItem("StoreAmount",Stores.length-1);
   localStorage.setItem("DefaultStore",DefaultStore);
   //localStorage.setItem("StoreName", StoreContainer.child(Stores[DefaultStore]).child("StoreName"));
 
+  //Gets the store reference we want to display.
   let StoreRef = StoreContainer.child(Stores[DefaultStore]);
 
+  //container for the items we will display later.
   let items = [];
 
+  //stores the name and number of the store into local storage,
+  //Retrieves the product data from the store,
+  //Applies any filter on the data that should be shown.
+  //Adds the filtered data to the items container.
   StoreRef.on('value', (snapshot) => {
     localStorage.setItem("StoreName", snapshot.child("StoreName").val());
     localStorage.setItem("StoreNum", snapshot.child("StoreNum").val());
@@ -124,55 +134,51 @@ database.ref("Picasso").child(child).on('value', (snapshot) => {
     console.log('The read failed: ' + errorObject.name);
   });
 
+  //Gets the store title and sets it to local variable StoreName, unless StoreName is null, then it is blank.
   let storeTitle = document.getElementById("StoreTitle");
   let str = localStorage.getItem("StoreName");
-  if(str == null){
+  if(str == null || str == "null"){
     storeTitle.innerHTML = "Store: "; 
   }else{
     storeTitle.innerHTML = "Store: " + str;
   }
 
+  //Gets the Type and Order Selections html elements
   var type = document.getElementById("Type-Selection");
   var order = document.getElementById("Order-Selection");
 
-  //
+  //Switch statement that will apply specific sorting functions based on the user's sorting input.
   switch(true){
     case(type.value == "Price" && order.value =="Ascending"):{
       items.sort(compareValueA);
-      //console.log(items);
       break;
     }
     case(type.value == "Price" && order.value =="Descending"):{
       items.sort(compareValueD);
-      //console.log(items);
       break;
     }
     case(type.value == "Quantity" && order.value =="Ascending"):{
       items.sort(compareQuantityA);
-      //console.log(items);
       break;
     }
     case(type.value == "Quantity" && order.value =="Descending"):{
       items.sort(compareQuantityD);
-      //console.log(items);
       break;
     }
     case(type.value == "Aile" && order.value =="Ascending"):{
       items.sort(compareAileA);
-      //console.log(items);
       break;
     }
     case(type.value == "Aile" && order.value =="Descending"):{
       items.sort(compareAileD);
-      //console.log(items);
       break;
     }
   }
 
+  //Container that hold html elements
   let divs = [];
 
-  //console.log(items);
-
+  //For loop that loops through the items array and constructs a list of html elements that are added to divs
   for(var i = 0; i<items.length; i++){
     //Creating a list to put the data in
     let li = document.createElement("ul");
@@ -191,8 +197,6 @@ database.ref("Picasso").child(child).on('value', (snapshot) => {
  
     let colorDiv = document.createElement('div');
     colorDiv.className = 'colorDiv';
- 
-         //This May have to change. Code: 1101
     let cl = document.createElement("button");
     cl.className="close1";
     cl.textContent="Delete Item";
@@ -213,12 +217,16 @@ database.ref("Picasso").child(child).on('value', (snapshot) => {
     divs.push(newDiv);
   }
 
+  //Display the new html elements.
   displayer(divs);
 }
 
+//***------------------------------------------Sort Functions-------------------------------------------***
+//Sorting functions: used with the .sort() method to sort the data by specific values.
+//input: a, unspecific first argument from the list. b, unspecific second arguement from the list.
+//output: sorts the list of products that is then used to create the html elements.
 function compareValueA(a,b)
 {
-  //console.log(parseFloat(a[2]));
   if(a[2] === b[2]){
     return 0;
   }
@@ -229,7 +237,6 @@ function compareValueA(a,b)
 
 function compareValueD(a,b)
 {
-  //console.log(parseFloat(a[2]));
   if(a[2] === b[2]){
     return 0;
   }
@@ -240,7 +247,6 @@ function compareValueD(a,b)
 
 function compareQuantityA(a,b)
 {
-  //console.log(parseFloat(a[2]));
   if(a[3] === b[3]){
     return 0;
   }
@@ -251,7 +257,6 @@ function compareQuantityA(a,b)
 
 function compareQuantityD(a,b)
 {
-  //console.log(parseFloat(a[2]));
   if(a[3] === b[3]){
     return 0;
   }
@@ -262,7 +267,6 @@ function compareQuantityD(a,b)
 
 function compareAileA(a,b)
 {
-  //console.log(parseFloat(a[2]));
   if(a[4] === b[4]){
     return 0;
   }
@@ -273,7 +277,6 @@ function compareAileA(a,b)
 
 function compareAileD(a,b)
 {
-  //console.log(parseFloat(a[2]));
   if(a[4] === b[4]){
     return 0;
   }
@@ -281,7 +284,11 @@ function compareAileD(a,b)
     return (parseFloat(a[4]) > parseFloat(b[4]))?-1:1;
   }
 }
+//***------------------------------------------Sort Functions-------------------------------------------***
 
+//displayer: takes a list of html elements and displayes them on the website
+//input: container containing all the html elements
+//output: data displayed on the website.
 function displayer(container)
 {
   for(let i = 0; i < container.length; i++)
@@ -290,12 +297,17 @@ function displayer(container)
   }
 }
 
-//To get data
+//errData: prints error message when data retrieval fails.
+//input: err, the error message
+//output: an alert message and console log with the err message displayed.
 function errData(err){
   console.log("Error");
   console.log(err);
 }
 
+//lstoreStore: Used to store the names of the stores into local storage systematically
+//input: The store being saved via 'item' and the index in the list via 'index'
+//output: local storage will be updated with the list of stores.
 function lstoreStore(item, index)
 {
   if(item == "DefaultStore" || item=="undefined")
@@ -304,8 +316,9 @@ function lstoreStore(item, index)
 }
 
 //***********************************************Function to submit form*********************************************************//
-//function to execute when the submit button is pressed
-// e is for event
+//submitForm: Adds new product data to the database
+//input: e, the product data
+//output: inserts new product data into the database
 function submitForm(e){
   e.preventDefault();
 
@@ -315,7 +328,6 @@ function submitForm(e){
     return;
   }
 
-  //console.log(e);
   //We need to save the current store they are looking at
   //we need to update only the store they want to add a product to.
 
@@ -351,7 +363,9 @@ function submitForm(e){
   
 }
 
-//Add new submittion function for a new store
+//submitStore: Sends the store data to the database
+//input: data from local storage.
+//output: inserts new data into the database.
 function submitStore(s){
 
   let StoreAmount = localStorage.getItem("StoreAmount");
@@ -361,18 +375,12 @@ function submitStore(s){
     Stores.push(localStorage.getItem("Store" + i));
   }
 
-  //console.log(Stores);
-
-  //let DefaultStore = localStorage.getItem("DefaultStore");
-
   let data = {
     StoreNum:parseInt(localStorage.getItem("StoreAmount")) + 1,
     StoreName:getElementVal("StoreName"),
   };
 
-  //console.log(data);
   let formDB = database.ref("Picasso/" + child);
-  //formDB.update({'DefaultStore': 0});
   //pushing the data to the databases 
   formDB.push(data);
 
@@ -400,8 +408,8 @@ const getElementVal = (id)=>{
 
 
 var currentTab = 0; // Current tab is set to be the first tab (0)
-//showTab(currentTab); // Display the current tab
 
+//Anmol Input
 function showTab(n) {
   // This function will display the specified tab of the form ...
   var x = document.getElementsByClassName("tab");
@@ -421,6 +429,7 @@ function showTab(n) {
   fixStepIndicator(n)
 }
 
+//Anmol Input
 function nextPrev(n) {
   // This function will figure out which tab to display
   var x = document.getElementsByClassName("tab");
@@ -440,6 +449,7 @@ function nextPrev(n) {
   showTab(currentTab);
 }
 
+//Anmol's input
 function validateForm() {
   // This function deals with validation of the form fields
   var x, y, i, valid = true;
@@ -462,6 +472,7 @@ function validateForm() {
   return valid; // return the valid status
 }
 
+//Anmol's input.
 function fixStepIndicator(n) {
   // This function removes the "active" class of all steps...
   var i, x = document.getElementsByClassName("step");
@@ -472,7 +483,9 @@ function fixStepIndicator(n) {
   x[n].className += " active";
 }
 
-
+//out: logs the user out of the website
+//input: none
+//output: user is signed out. Clears local variables upon leaving.
 function out(){
   localStorage.clear();
   firebase.auth().signOut().then(() => {
@@ -481,10 +494,11 @@ function out(){
   }).catch((error) => {
 
   });
-  //window.alert("sdfsdfgefgsfsg");
-  //location.href = 'login.html'
 }
 
+//nextStore: Changes the currently showing store to store number 'n'
+//input: n, the store number to change to
+//output: updates the main page with new data for the change in store.
 function nextStore(n){
   let formDB = database.ref("Picasso/" + child);
   formDB.update({'DefaultStore': n});
@@ -492,12 +506,17 @@ function nextStore(n){
   getData();
 }
 
+//search: sets the localstorage item "filter" to whatever the value of "search_inp" is.
+//input: none
+//output: "filter" local variable is set to "search_inp" value.
 function search(){
-  //window.alert("This is the search function");
   let searchCriteria = document.getElementById("search_inp");
   localStorage.setItem("filter", searchCriteria.value);
 }
 
+//delStore: Deletes a store from the database, including all inventory items.
+//Input: Takes a string with the child name that will be removed
+//Output None
 function delStore(s){
   database.ref("Picasso").child(child).child(s).remove().then(function(){
     window.reload();
